@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 import type { IconSvgTypes } from '@/assets/svg';
 import type { I18nKeys } from '@/utils/i18n/locales';
 
+import { IconSvgLocal } from '../icon-vec-local';
+
 interface idPropButton extends React.HTMLAttributes<HTMLDivElement> {
   type?: 'primary' | 'secondary' | 'ghost' | 'whiteGhost';
   htmlType?: HTMLButtonElement['type'];
@@ -81,18 +83,18 @@ const ButtonBase = (props: idPropButton) => {
     >
       {leftIcon && (
         <div style={{ marginRight: content ? 8 : 0 }}>
-          {/* <IconSvgLocal name={leftIcon} height={heightIcon} width={20} fill={updateImageState()} /> */}
+          <IconSvgLocal name={leftIcon} height={heightIcon} width={20} fill={updateImageState()} />
         </div>
       )}
       {content}
       {rightIcon && (
         <div style={{ marginLeft: content ? 8 : 0 }}>
-          {/* <IconSvgLocal
+          <IconSvgLocal
             name={rightIcon}
             height={heightIcon}
             width={widthIcon}
             fill={disabled ? 'rgb(var(--color-600)' : ''}
-          /> */}
+          />
         </div>
       )}
     </button>

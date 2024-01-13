@@ -1,5 +1,7 @@
 import { Children, Fragment } from 'react';
 
+import { IconSvgLocal } from '../icon-vec-local';
+
 const Breadcrumbs = ({ children }: any) => {
   const childrenArray = Children.toArray(children);
   const childrenWtihSeperator = childrenArray.map((child, index) => {
@@ -8,7 +10,7 @@ const Breadcrumbs = ({ children }: any) => {
         <Fragment key={index}>
           {child}
           <span className="text-color-700">
-            {/* <IconSvgLocal height={20} name="IC_ARROW_RIGHT" fill="rgb(var(--pending-600)" /> */}
+            <IconSvgLocal height={20} name="IC_ARROW_RIGHT" fill="rgb(var(--pending-600)" />
           </span>
         </Fragment>
       );

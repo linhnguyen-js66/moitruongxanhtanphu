@@ -1,6 +1,7 @@
 import { Layout } from 'antd';
 import Link from 'next/link';
 
+import { IconSvgLocal } from '@/components';
 import { TextBase } from '@/components/text';
 
 const { Footer } = Layout;
@@ -18,7 +19,7 @@ const FooterApp = () => {
       <div className="item-content flex gap-24">
         {links.map(({ t18n, onClick, icon }: any, index) => (
           <Link href="/" key={index} className="flex items-center gap-8 mobile:gap-4">
-            {/* <IconSvgLocal name={icon} classNames="h-20 mobile:h-16" fill="rgb(var(--color-800))" /> */}
+            <IconSvgLocal name={icon} classNames="h-20 mobile:h-16" fill="rgb(var(--color-800))" />
             <TextBase
               key={t18n}
               t18n={t18n}

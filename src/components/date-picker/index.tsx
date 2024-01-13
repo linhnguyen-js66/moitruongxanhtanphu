@@ -7,6 +7,8 @@ import { useController } from 'react-hook-form';
 import type { IconSvgTypes } from '@/assets/svg';
 import { useDatePickerLanguage } from '@/hooks/useDatePickerLanguage';
 
+import { IconSvgLocal } from '../icon-vec-local';
+
 export interface AppDatePickerProps extends Omit<DatePickerProps, 'suffixIcon' | 'className'> {
   name?: string;
   label?: string;
@@ -80,8 +82,9 @@ const AppDatePicker = React.forwardRef<InputRef, AppDatePickerProps>((props, ref
         format={format}
         ref={inputRef}
         suffixIcon={
-          typeof suffixIcon === 'string' ? null : (
-            // <IconSvgLocal name={suffixIcon as IconSvgTypes} height={20} width={20} />
+          typeof suffixIcon === 'string' ? (
+            <IconSvgLocal name={suffixIcon as IconSvgTypes} height={20} width={20} />
+          ) : (
             <>{suffixIcon}</>
           )
         }

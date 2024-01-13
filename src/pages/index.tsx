@@ -1,4 +1,4 @@
-import AppLayout from '@/layouts/app-layout';
+import HomeLayout from '@/layouts/home-layout';
 import { Meta } from '@/layouts/Meta';
 import { AppConfig } from '@/utils/AppConfig';
 
@@ -17,6 +17,6 @@ const Home: NextPageWithLayout = () => {
     </Meta>
   );
 };
-Home.Layout = AppLayout;
+Home.Layout = HomeLayout;
 
 export default Home;
