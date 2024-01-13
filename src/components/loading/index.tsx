@@ -1,6 +1,5 @@
 import { createRef, forwardRef, useImperativeHandle, useState } from 'react';
-
-import { IconSvgLocal } from '../icon-vec-local';
+import ReactDOM from 'react-dom';
 
 const LoadingLayout = forwardRef((_, ref: any) => {
   const [visible, setVisible] = useState(false);
@@ -11,30 +10,32 @@ const LoadingLayout = forwardRef((_, ref: any) => {
     () => ({
       show: () => {
         setVisible(true);
+        document.body.style.overflow = 'hidden';
       },
       hide: () => {
         setVisible(false);
+        document.body.style.overflow = 'auto';
       },
     }),
-    [],
+    []
   );
 
   if (!visible) {
     return <></>;
   }
 
-  // return ReactDOM.createPortal(
-  //   <div className='loading_custom'>
-  //   <IconSvgLocal name="IC_LOADING" className='w-[60px] h-[60px]'/>
-  // </div>,
-  // //@ts-ignore
-  //   document.querySelector('body'),
-  // )
-  return (
+  return ReactDOM.createPortal(
     <div className="loading_custom">
-      <IconSvgLocal name="IC_LOADING" className="h-[60px] w-[60px]" />
-    </div>
+      {/* <IconSvgLocal name="IC_LOADING" className="h-[60px] w-[60px]" /> */}
+    </div>,
+    // @ts-ignore
+    document.querySelector('body')
   );
+  // return (
+  //   <div className='loading_custom'>
+  //     <IconSvgLocal name="IC_LOADING" className='w-[60px] h-[60px]'/>
+  //   </div>
+  // );
 });
 
 // export default LoadingLayout;

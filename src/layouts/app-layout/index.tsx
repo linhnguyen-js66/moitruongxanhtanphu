@@ -1,11 +1,25 @@
 import type { LayoutProps } from 'antd';
+import { Layout } from 'antd';
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { TextBase } from '@/components';
+import Breadcrumb from '@/components/breadcrumb';
+import BreadcrumbItem from '@/components/breadcrumb-item';
 import { ROUTES_MAPPING } from '@/config/routes';
+import { HeaderApp } from '@/layouts/header';
 
-export default function AppLayout({ children }: LayoutProps) {
+import { FooterApp } from '../footer';
+import Menu from '../menu';
+
+const { Content } = Layout;
+
+interface AppLayoutProps extends LayoutProps {
+  isHideBreadcrumb?: boolean;
+}
+
+export default function AppLayout({ children, isHideBreadcrumb = false }: AppLayoutProps) {
   const refMenu = useRef(null);
   const router = useRouter();
   const [breadcrumbs, setBreadcrumbs] = useState<
@@ -14,8 +28,11 @@ export default function AppLayout({ children }: LayoutProps) {
       label: string;
     }[]
   >();
+
   const [t] = useTranslation();
+
   useEffect(() => {
+    if (isHideBreadcrumb) return;
     const pathWithoutQuery = router.asPath.split('?')[0];
     if (pathWithoutQuery) {
       let pathArray = pathWithoutQuery.split('/');
@@ -29,20 +46,61 @@ export default function AppLayout({ children }: LayoutProps) {
 
         // @ts-ignore
         const key = Object.keys(ROUTES_MAPPING).find(
-          (keyPath: any) => ROUTES_MAPPING[keyPath].path == href,
+          (keyPath: any) => ROUTES_MAPPING[keyPath].path == href
         );
 
         return {
           // @ts-ignore
           href: key ? ROUTES_MAPPING[key].path : href,
           // @ts-ignore
-          label: key
-            ? ROUTES_MAPPING[key].title
-            : path.charAt(0).toUpperCase() + path.slice(1),
+          label: key ? ROUTES_MAPPING[key].title : path.charAt(0).toUpperCase() + path.slice(1),
         };
       });
 
       breadcrumbs ? setBreadcrumbs(breadcrumbs) : null;
     }
-  }, [router.asPath]);
+  }, [router.asPath, isHideBreadcrumb]);
+  return (
+    <div className="flex min-h-[100vh] flex-col bg-color-100">
+      <div className="flex flex-1">
+        <Menu ref={refMenu} />
+        <div className="wrap_layout">
+          <HeaderApp
+            onClickMenu={() => {
+              // @ts-ignore
+              refMenu.current?.onShowHideMenu();
+            }}
+          />
+          <Content className="px-40 py-12 tablet:px-28">
+            <>
+              {!isHideBreadcrumb && (
+                <div className="wrap_content_page">
+                  <div className="content_page">
+                    <Breadcrumb>
+                      <BreadcrumbItem href="/">{t('text:homepage')}</BreadcrumbItem>
+                      {breadcrumbs &&
+                        breadcrumbs.map((breadcrumb) => (
+                          <BreadcrumbItem key={breadcrumb.href} href={breadcrumb.href}>
+                            {t(breadcrumb.label)}
+                          </BreadcrumbItem>
+                        ))}
+                    </Breadcrumb>
+                    {breadcrumbs && (
+                      <TextBase
+                        className="title1 mt-12 text-color-900"
+                        presetTable="title3"
+                        t18n={breadcrumbs[breadcrumbs?.length - 1]?.label}
+                      />
+                    )}
+                  </div>
+                </div>
+              )}
+              {children}
+            </>
+          </Content>
+        </div>
+      </div>
+      <FooterApp />
+    </div>
+  );
 }

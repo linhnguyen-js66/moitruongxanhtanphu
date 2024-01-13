@@ -32,5 +32,6 @@ export {
   List,
   LoadingProgress,
   TextBase,
-  WrapStyle,
+  WrapStyle
 };
+

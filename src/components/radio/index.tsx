@@ -22,7 +22,7 @@ export interface AppRadioControlProps<T extends FieldValues> extends AppRadioPro
 }
 
 export interface AppRadioOption {
-  value: string;
+  value: any;
   label: string;
 }
 
@@ -55,7 +55,7 @@ export default function AppRadio(props: AppRadioProps) {
       )}
       <div>
         <Radio.Group name={name} {...restProps}>
-          <Space direction={direction}>
+          <Space direction={direction} className={'gap-40'}>
             {options.map((option) => (
               <Radio key={option.value} value={option.value} className={labelClassName}>
                 {option.label}

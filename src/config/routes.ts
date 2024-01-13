@@ -1,6 +1,5 @@
 export const ROUTES = {
   HOME: '/',
-
   COMPONENT: '/component',
 };
 
