@@ -8,6 +8,8 @@ import { useController } from 'react-hook-form';
 import AppHelperText from '@/components/helper-text';
 import { ERROR_NO_DISPLAY } from '@/utils/contant';
 
+import { IconSvgLocal } from '../icon-vec-local';
+
 export interface AppTextFieldProps extends InputProps {
   label?: string;
   labelSuffix?: React.ReactNode;
@@ -45,11 +47,11 @@ export const AppTextField = forwardRef((props: AppTextFieldProps, ref: Ref<Input
 
   const renderPasswordSuffix = (visible: boolean) => (
     <div>
-      {/* <IconSvgLocal
+      <IconSvgLocal
         name={visible ? 'ICON_EYE_SPLASH' : 'ICON_EYE_OPEN'}
         height={20}
         fill="rgb(var(--color-700)"
-      /> */}
+      />
     </div>
   );
 

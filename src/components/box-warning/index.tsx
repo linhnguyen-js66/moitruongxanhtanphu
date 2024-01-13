@@ -1,5 +1,6 @@
 import type { I18nKeys } from '@/utils/i18n/locales';
 
+import { IconSvgLocal } from '../icon-vec-local';
 import { TextBase } from '../text';
 
 interface PropBoxWarning {
@@ -25,7 +26,7 @@ export default function BoxWarning(props: PropBoxWarning) {
       className="flex flex-row items-center gap-8 rounded-radius-l border-weight-m px-12 py-8"
       style={{ background: color.bgBox, borderColor: color.border }}
     >
-      {/* <IconSvgLocal name="ICON_WARNING" classNames="w-24 h-24" fill={color.text} /> */}
+      <IconSvgLocal name="ICON_WARNING" classNames="w-24 h-24" fill={color.text} />
       <TextBase className="body1" style={{ color: color.text }} t18n={label} />
     </div>
   );

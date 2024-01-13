@@ -1,6 +1,8 @@
 import { createRef, forwardRef, useImperativeHandle, useState } from 'react';
 import ReactDOM from 'react-dom';
 
+import { IconSvgLocal } from '../icon-vec-local';
+
 const LoadingLayout = forwardRef((_, ref: any) => {
   const [visible, setVisible] = useState(false);
 
@@ -26,7 +28,7 @@ const LoadingLayout = forwardRef((_, ref: any) => {
 
   return ReactDOM.createPortal(
     <div className="loading_custom">
-      {/* <IconSvgLocal name="IC_LOADING" className="h-[60px] w-[60px]" /> */}
+      <IconSvgLocal name="IC_LOADING" className="h-[60px] w-[60px]" />
     </div>,
     // @ts-ignore
     document.querySelector('body')
