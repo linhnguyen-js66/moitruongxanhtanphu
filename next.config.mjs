@@ -1,29 +1,31 @@
-import { withSentryConfig } from '@sentry/nextjs';
 /* eslint-disable import/no-extraneous-dependencies, import/extensions */
-import './src/libs/Env.mjs';
 import withBundleAnalyzer from '@next/bundle-analyzer';
-import withNextIntl from 'next-intl/plugin';
-
-const withNextIntlConfig = withNextIntl('./src/libs/i18n.ts');
 
 const bundleAnalyzer = withBundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 });
 
 /** @type {import('next').NextConfig} */
-const configNext = {
-  // output: 'export',
+export default bundleAnalyzer({
   eslint: {
-    dirs: ['.'],
+    // dirs: ['.'],
     ignoreDuringBuilds: true,
   },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
+  // typescript: {
+  //   ignoreBuildErrors: true,
+  // },
+  reactStrictMode: true,
+  transpilePackages: [
+    'rc-util',
+    '@ant-design',
+    'kitchen-flow-editor',
+    '@ant-design/pro-editor',
+    'zustand', 'leva', 'antd',
+    'rc-pagination',
+    'rc-picker'
+  ],
   poweredByHeader: false,
-  reactStrictMode: false,
   images: {
-    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
@@ -44,11 +46,10 @@ const configNext = {
       use: {
         loader: '@svgr/webpack',
         options: {
-          dimensions: false,
-        },
-      },
-    });
+          dimensions: false
+        }
+       },
+    })
     return config;
   },
-};
-export default withSentryConfig(bundleAnalyzer(withNextIntlConfig(configNext)));
+});

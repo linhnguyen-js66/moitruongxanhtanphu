@@ -15,8 +15,6 @@ const createNoopStorage = () => {
 };
 
 const storeSessionPersist =
-  typeof window !== 'undefined'
-    ? createWebStorage('session')
-    : createNoopStorage();
+  typeof window !== 'undefined' ? createWebStorage('session') : createNoopStorage();
 
 export default storeSessionPersist;

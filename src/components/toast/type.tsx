@@ -1,4 +1,4 @@
-import { IconSvgLocalProps } from "@/components/icon-vec-local/type";
+import type { IconSvgLocalProps } from '@/components/icon-vec-local/type';
 
 export enum TYPE_TOAST {
   INFO = 'info',
@@ -12,5 +12,5 @@ export interface ToastProps {
   content: string;
   wrapClassName?: string;
   timeShow?: number;
-  icon?: IconSvgLocalProps
+  icon?: IconSvgLocalProps;
 }

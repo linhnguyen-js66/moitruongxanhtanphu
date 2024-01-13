@@ -1,3 +1,4 @@
+import IC_LOADING from './IC_LOADING.svg';
 import IC_ARROW_LEFT from './arrow-left.svg';
 import IC_ARROW_RIGHT from './arrow-right.svg';
 import ICON_EYE_OPEN from './eye-open.svg';
@@ -20,5 +21,6 @@ export const IconSvgs = {
   ICON_WARNING,
   IC_ARROW_LEFT,
   IC_ARROW_RIGHT,
+  IC_LOADING,
 };
 export type IconSvgTypes = keyof typeof IconSvgs;

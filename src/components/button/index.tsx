@@ -2,10 +2,8 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import type { IconSvgTypes } from '@/assets/svg';
-import { IconSvgLocal } from '@/components/icon-vec-local';
 import type { I18nKeys } from '@/utils/i18n/locales';
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 interface idPropButton extends React.HTMLAttributes<HTMLDivElement> {
   type?: 'primary' | 'secondary' | 'ghost' | 'whiteGhost';
   htmlType?: HTMLButtonElement['type'];
@@ -64,11 +62,7 @@ const ButtonBase = (props: idPropButton) => {
 
   if (onlyWrap) {
     return (
-      <div
-        {...reftProps}
-        onClick={onClick}
-        className={`cursor-pointer ${reftProps.className}`}
-      >
+      <div {...reftProps} onClick={onClick} className={`cursor-pointer ${reftProps.className}`}>
         {children || customContent}
       </div>
     );
@@ -87,23 +81,18 @@ const ButtonBase = (props: idPropButton) => {
     >
       {leftIcon && (
         <div style={{ marginRight: content ? 8 : 0 }}>
-          <IconSvgLocal
-            name={leftIcon}
-            height={heightIcon}
-            width={20}
-            fill={updateImageState()}
-          />
+          {/* <IconSvgLocal name={leftIcon} height={heightIcon} width={20} fill={updateImageState()} /> */}
         </div>
       )}
       {content}
       {rightIcon && (
         <div style={{ marginLeft: content ? 8 : 0 }}>
-          <IconSvgLocal
+          {/* <IconSvgLocal
             name={rightIcon}
             height={heightIcon}
             width={widthIcon}
             fill={disabled ? 'rgb(var(--color-600)' : ''}
-          />
+          /> */}
         </div>
       )}
     </button>

@@ -6,7 +6,6 @@ import type { Control, FieldError, FieldValues, Path } from 'react-hook-form';
 import { useController } from 'react-hook-form';
 
 import AppHelperText from '@/components/helper-text';
-import { IconSvgLocal } from '@/components/icon-vec-local';
 import { ERROR_NO_DISPLAY } from '@/utils/contant';
 
 export interface AppTextFieldProps extends InputProps {
@@ -46,11 +45,11 @@ export const AppTextField = forwardRef((props: AppTextFieldProps, ref: Ref<Input
 
   const renderPasswordSuffix = (visible: boolean) => (
     <div>
-      <IconSvgLocal
+      {/* <IconSvgLocal
         name={visible ? 'ICON_EYE_SPLASH' : 'ICON_EYE_OPEN'}
         height={20}
         fill="rgb(var(--color-700)"
-      />
+      /> */}
     </div>
   );
 
@@ -73,8 +72,8 @@ export const AppTextField = forwardRef((props: AppTextFieldProps, ref: Ref<Input
         ref={ref}
         {...(isPasswordType
           ? {
-            iconRender: renderPasswordSuffix,
-          }
+              iconRender: renderPasswordSuffix,
+            }
           : {})}
         className={`
             border-color-300
@@ -92,10 +91,11 @@ export const AppTextField = forwardRef((props: AppTextFieldProps, ref: Ref<Input
             [&>input]:placeholder:text-color-600
             [&_.ant-input-password-icon]:cursor-pointer
           
-            ${error
-            ? '!border-error-500'
-            : 'focus-within:!border-primary-500 hover:!border-primary-500 focus:!border-primary-500'
-          }`}
+            ${
+              error
+                ? '!border-error-500'
+                : 'focus-within:!border-primary-500 hover:!border-primary-500 focus:!border-primary-500'
+            }`}
       />
       <AppHelperText caption={caption} captionPrefix={captionPrefix} error={error} />
     </div>
