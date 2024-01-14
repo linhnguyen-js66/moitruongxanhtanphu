@@ -36,6 +36,7 @@
   background: transparent;
   @apply mt-48;
   @media (max-width: theme('screens.tablet.max')) { 
+    z-index: 50;
     position: sticky;
     background: theme('colors.color.50');
     height: 64px;
@@ -102,4 +103,9 @@ scrollbar-width: none;  /* Firefox */
 .ant-picker-input{
   display: flex;
   justify-content: space-between;
+}
+
+
+.ant-modal .ant-modal-content {
+  @apply p-24
 }

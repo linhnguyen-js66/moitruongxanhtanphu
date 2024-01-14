@@ -5,7 +5,7 @@
     "dev:spotlight": "spotlight-sidecar",
     "dev:next": "next dev",
     "dev": "run-p dev:*",
-    "build": "npm run db:migrate && next build",
+    "build": "next build",
     "start": "next start",
     "build-stats": "cross-env ANALYZE=true npm run build",
     "clean": "rimraf .next .swc out coverage",
@@ -18,11 +18,6 @@
     "db:migrate": "dotenv -c -- tsx ./scripts/dbMigrate.ts",
     "db:studio": "dotenv -c -- drizzle-kit studio",
     "test:e2e": "playwright test",
-    "storybook": "storybook dev -p 6006",
-    "storybook:build": "storybook build",
-    "storybook:serve": "http-server storybook-static --port 6006 --silent",
-    "serve-storybook": "run-s storybook:*",
-    "test-storybook:ci": "start-server-and-test serve-storybook http://127.0.0.1:6006 test-storybook",
     "postbuild": "next-sitemap"
   },
   "dependencies": {

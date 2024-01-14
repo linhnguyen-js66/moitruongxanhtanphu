@@ -1,7 +1,9 @@
+/* init preset className */
+
 @tailwind base;
 
 body, html {
-  @apply h-full;
+  position: relative;
 }
 textarea:focus, input:focus{
   outline: none;
@@ -26,6 +28,7 @@ textarea:focus, input:focus{
 @import "./components/footer.scss";
 @import "./components/custom-slide.scss";
 @import "./components/loading.scss";
+
 
 @import "./custom_theme.scss";
 
@@ -56,112 +59,43 @@ textarea:focus, input:focus{
 
 @layer base {
   :root {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Inter';
     // font-family: 'Lato';
     // To use below color variable in css or scss, use following syntax: rgb(var(--color-name))
     //Ex: rgb(var(--primary-50)) --> rgb(255,249,230)
-    --text-primary: #{toRGB(#313442)};
+    // --text-primary: #{toRGB(#313442)};
+    //🔥🔥🔥🔥🔥🔥 DESIGN SYSTEM 🔥🔥🔥🔥🔥🔥
+    --primary-800: #{toRGB(#2A660A)};
+    --primary-700: #{toRGB(#4F881E)};
+    --primary-600: #{toRGB(#639B27)};
+    --primary-500: #{toRGB(#77AF31)};
+    --primary-400: #{toRGB(#87BF38)};
+    --primary-300: #{toRGB(#99C858)};
+    --primary-200: #{toRGB(#ABD277)};
+    --primary-100: #{toRGB(#C3DF9E)};
+    --primary-50: #{toRGB(#DBECC4)};
 
-    --primary-50: #{toRGB(#FFF7DF)};
-    --primary-100: #{toRGB(#FFEAAF)};
-    --primary-200: #{toRGB(#FFEAAF)};
-    --primary-300: #{toRGB(#FFEAAF)};
-    --primary-500: #{toRGB(#FFC709)};
-    --primary-600: #{toRGB(#F0AF08)};
-    --primary-700: #{toRGB(#DB850D)};
-    --primary-800: #{toRGB(#BE6500)};
+    --color-900: #{toRGB(#0D0D0D)};
+    --color-800: #{toRGB(#2E2E2E)};
+    --color-700: #{toRGB(#4C4C4C)};
+    --color-600: #{toRGB(#5E5E5E)};
+    --color-500: #{toRGB(#858585)};
+    --color-400: #{toRGB(#A7A7A7)};
+    --color-300: #{toRGB(#CCCCCC)};
+    --color-200: #{toRGB(#DFDFDF)};
+    --color-100: #{toRGB(#ECECEC)};
+    --color-50: #{toRGB(#FCFCFD)};
 
-    --secondary: #{toRGB(#82869E)};
-    --secondary-50: #{toRGB(#E6F1F8)};
-    --secondary-100: #{toRGB(#D9EAF5)};
-    --secondary-200: #{toRGB(#B3D5EB)};
-    --secondary-300: #{toRGB(#99C7E4)};
-    --secondary-500: #{toRGB(#0072BC)};
-    --secondary-600: #{toRGB(#0061A0)};
-    --secondary-700: #{toRGB(#005084)};
-    --secondary-800: #{toRGB(#004471)};
+    --error-500: #{toRGB(#FF2B2B)};
+    --pending-500: #{toRGB(#FF9E00)};
+    --success-500: #{toRGB(#08CB66)};
 
-    --gradient-priority-start: #{toRGB(#FCDFAA)};
-    --gradient-priority-end: #{toRGB(#F9C461)};
-    --gradient-primary-start: #{toRGB(#31AEFF)};
-    --gradient-primary-end: #{toRGB(#006DB4)};
-    --gradient-secondary-start: #{toRGB(#FFE609)};
-    --gradient-secondary-end: #{toRGB(#FFA800)};
-    --gradient-100-start: #{toRGB(#FFD143)};
-    --gradient-100-middle: #{toRGB(#FFF2CC)};
-    --gradient-100-end: #{toRGB(#FFFFFF)};
-    --gradient-200-start: #{toRGB(#FFFFFF)};
-    --gradient-200-middle: #{toRGB(#FFF7DD)};
-    --gradient-200-end: #{toRGB(#FFFBF0)};
-
-    --link-50: #{toRGB(#ebf5ff)};
-    --link-100: #{toRGB(#ebf5ff)};
-    --link-200: #{toRGB(#c4e2fe)};
-    --link-300: #{toRGB(#a6d3fe)};
-    --link-500: #{toRGB(#3a9efc)};
-    --link-600: #{toRGB(#3186d6)};
-    --link-700: #{toRGB(#296FB0)};
-    --link-800: #{toRGB(#235f97)};
-
-    --success-50: #{toRGB(#e9f8ed)};
-    --success-100: #{toRGB(#ddf5e4)};
-    --success-200: #{toRGB(#bcebca)};
-    --success-300: #{toRGB(#a5e4b8)};
-    --success-500: #{toRGB(#1EBB4D)};
-    --success-600: #{toRGB(#1A9F41)};
-    --success-700: #{toRGB(#158336)};
-    --success-800: #{toRGB(#12702e)};
-
-    --pending-50: #{toRGB(#FFF5E9)};
-    --pending-100: #{toRGB(#FFF0DD)};
-    --pending-200: #{toRGB(#FFE0BC)};
-    --pending-300: #{toRGB(#FFD6A5)};
-    --pending-500: #{toRGB(#FF991F)};
-    --pending-600: #{toRGB(#D9821A)};
-    --pending-700: #{toRGB(#B36B16)};
-    --pending-800: #{toRGB(#995C13)};
-
-    --error-50: #{toRGB(#fcebeb)};
-    --error-100: #{toRGB(#fbe1e1)};
-    --error-200: #{toRGB(#f7c2c2)};
-    --error-300: #{toRGB(#f4aeae)};
-    --error-500: #{toRGB(#E43434)};
-    --error-600: #{toRGB(#c22c2c)};
-    --error-700: #{toRGB(#a02424)};
-    --error-800: #{toRGB(#891f1f)};
-
-    --color-50: #{toRGB(#FFFFFF)}; // white
-    --color-100: #{toRGB(#F8F8FC)}; // table-header
-    --color-200: #{toRGB(#F3F3F7)}; // background
-    --color-300: #{toRGB(#E4E5F0)}; // divider
-    --color-400: #{toRGB(#DCDEE9)}; // disable
-    --color-500: #{toRGB(#BCBFD6)}; // border
-    --color-600: #{toRGB(#A7ABC3)}; // placeholder
-    --color-700: #{toRGB(#82869E)}; // text-secondary
-    --color-800: #{toRGB(#313442)}; // text-primary
-    --color-900: #{toRGB(#1B1D29)}; // text-title
-    --color-black: #{toRGB(#000000)};
-
-    --color-2000: #{toRGB(hsl(209,97,61))}; //Test Color, don't use this color
-
-    --blur_modal: #{toRGB(#4A4A4C)};
-
-    --common-0: #{toRGB(#1B1D29)}; // text-label ; text_btn_primary
-    --common-500: #{toRGB(#6f6f6f)};
-    --common-1000: #{toRGB(#FFFFFF)}; // background icon button;
-
-    --transaction-start: #{toRGB(#FFFFFF)};
-    --transaction-middle: #{toRGB(#FFF2CC)};
-    --transaction-end: #{toRGB(#FFF7DF)};
-
-    --background_image: #{toRGB(#F6F6F6)};
-
-    --skeleton-background: #{toRGB(#F3F3F7)};
-    --skeleton-highlight: #{toRGB(#FFFFFF)};
+    
+    --common-1000: #{toRGB(#FFFFFF)};
   }
 }
 
-/* init preset className */
+// /* init preset className */
 .h1 {
   font-size: theme('fontSize.48');
   line-height: theme('lineHeight.64');
@@ -171,120 +105,106 @@ textarea:focus, input:focus{
 .h2 {
   font-size: theme('fontSize.40');
   line-height: theme('lineHeight.56');
-  font-weight: theme('fontWeight.extrabold');
+  font-weight: theme('fontWeight.bold');
 }
 
 .h3 {
   font-size: theme('fontSize.32');
   line-height: theme('lineHeight.40');
-  font-weight: theme('fontWeight.semibold');
+  font-weight: theme('fontWeight.bold');
 }
 
 .h4 {
-  font-size: theme('fontSize.28');
+  font-size: theme('fontSize.24');
   line-height: theme('lineHeight.36');
-  font-weight: theme('fontWeight.semibold');
+  font-weight: theme('fontWeight.bold');
 }
 
 .title1 {
-  font-size: theme('fontSize.24');
-  line-height: theme('lineHeight.32');
-  font-weight: theme('fontWeight.extrabold');
-}
-
-.title2 {
-  font-size: theme('fontSize.24');
-  line-height: theme('lineHeight.36');
-  font-weight: theme('fontWeight.semibold');
-}
-
-.title3 {
   font-size: theme('fontSize.20');
-  line-height: theme('lineHeight.28');
-  font-weight: theme('fontWeight.extrabold');
+  line-height:theme('lineHeight.32');
+  font-weight: theme('fontWeight.bold');
 }
-
-.title4 {
+.title2 {
   font-size: theme('fontSize.18');
-  line-height: theme('lineHeight.24');
+  line-height:theme('lineHeight.28');
   font-weight: theme('fontWeight.bold');
 }
 
-.title5 {
-  font-size: theme('fontSize.18');
-  line-height: theme('lineHeight.24');
-  font-weight: theme('fontWeight.semibold');
-  
+@mixin body($font-size, $line-height, $font-weight) {
+  font-size: $font-size;
+  line-height: $line-height;
+  font-weight: $font-weight;
 }
 
-.sub-title1 {
-  font-size: theme('fontSize.15');
-  line-height: theme('lineHeight.24');
-  font-weight: theme('fontWeight.bold');
-  
+.body-text {
+  @include body(theme('fontSize.20'), theme('lineHeight.32'), theme('fontWeight.bold'));
 }
 
-.sub-title2 {
-  font-size: theme('fontSize.15');
-  line-height: theme('lineHeight.24');
-  font-weight: theme('fontWeight.semibold');
-  
+.body-text-semibold {
+  @include body(theme('fontSize.20'), theme('lineHeight.32'), theme('fontWeight.semibold'));
 }
 
-.sub-title3 {
-  font-size: theme('fontSize.13');
-  line-height: theme('lineHeight.24');
-  font-weight: theme('fontWeight.bold');
-  
+.body-text-medium {
+  @include body(theme('fontSize.20'), theme('lineHeight.32'), theme('fontWeight.medium'));
 }
 
-.sub-title4 {
-  font-size: theme('fontSize.13');
-  line-height: theme('lineHeight.24');
-  font-weight: theme('fontWeight.semibold');
-  
+.body-text-18-bold {
+  @include body(theme('fontSize.18'), theme('lineHeight.28'), theme('fontWeight.bold'));
 }
 
-.body1 {
-  font-size: theme('fontSize.13');
-  line-height: theme('lineHeight.20');
-  font-weight: theme('fontWeight.normal');
-  
+.body-text-18-semibold {
+  @include body(theme('fontSize.18'), theme('lineHeight.28'), theme('fontWeight.semibold'));
 }
 
-.body2 {
-  font-size: theme('fontSize.13');
-  line-height: theme('lineHeight.20');
-  font-weight: theme('fontWeight.semibold');
-  
+.body-text-18-medium {
+  @include body(theme('fontSize.18'), theme('lineHeight.28'), theme('fontWeight.medium'));
 }
 
-.body3 {
-  font-size: theme('fontSize.15');
-  line-height: theme('lineHeight.20');
-  font-weight: theme('fontWeight.normal');
-  
+.body-text-16-bold {
+  @include body(theme('fontSize.16'), theme('lineHeight.24'), theme('fontWeight.bold'));
 }
 
-.caption1 {
-  font-size: theme('fontSize.12');
-  line-height: theme('lineHeight.20');
-  font-weight: theme('fontWeight.semibold');
-  
+.body-text-16-semibold {
+  @include body(theme('fontSize.16'), theme('lineHeight.24'), theme('fontWeight.semibold'));
 }
 
-.caption2 {
-  font-size: theme('fontSize.12');
-  line-height: theme('lineHeight.16');
-  font-weight: theme('fontWeight.normal');
-  
+.body-text-16-medium {
+  @include body(theme('fontSize.16'), theme('lineHeight.24'), theme('fontWeight.medium'));
 }
 
-.caption3 {
-  font-size: theme('fontSize.10');
-  line-height: theme('lineHeight.16');
-  text-transform: uppercase;
-  font-weight: theme('fontWeight.medium');
-  
+.body-text-14-bold {
+  @include body(theme('fontSize.14'), theme('lineHeight.20'), theme('fontWeight.bold'));
 }
 
+.body-text-14-semibold {
+  @include body(theme('fontSize.14'), theme('lineHeight.20'), theme('fontWeight.semibold'));
+}
+
+.body-text-14-medium {
+  @include body(theme('fontSize.14'), theme('lineHeight.20'), theme('fontWeight.medium'));
+}
+
+.body-text-12-bold {
+  @include body(theme('fontSize.12'), theme('lineHeight.16'), theme('fontWeight.bold'));
+}
+
+.body-text-12-semibold {
+  @include body(theme('fontSize.12'), theme('lineHeight.16'), theme('fontWeight.semibold'));
+}
+
+.body-text-12-medium {
+  @include body(theme('fontSize.12'), theme('lineHeight.16'), theme('fontWeight.medium'));
+}
+
+.body-text-10-bold {
+  @include body(theme('fontSize.10'), theme('lineHeight.12'), theme('fontWeight.bold'));
+}
+
+.body-text-10-semibold {
+  @include body(theme('fontSize.10'), theme('lineHeight.12'), theme('fontWeight.semibold'));
+}
+
+.body-text-10-medium {
+  @include body(theme('fontSize.10'), theme('lineHeight.12'), theme('fontWeight.medium'));
+}

@@ -9,4 +9,9 @@ export const ROUTES_MAPPING = {
     title: 'Trang chủ',
     breadcrumbTitle: 'Trang chủ',
   },
+  ABOUT: {
+    path: '/',
+    title: 'About',
+    breadcrumbTitle: 'About',
+  },
 };

@@ -1,13 +1,10 @@
 import type { DatePickerProps } from 'antd/lib/date-picker';
-import DatePicker from 'antd/lib/date-picker';
 import React, { useImperativeHandle, useRef } from 'react';
 import type { Control, FieldValues, Path } from 'react-hook-form';
 import { useController } from 'react-hook-form';
 
 import type { IconSvgTypes } from '@/assets/svg';
 import { useDatePickerLanguage } from '@/hooks/useDatePickerLanguage';
-
-import { IconSvgLocal } from '../icon-vec-local';
 
 export interface AppDatePickerProps extends Omit<DatePickerProps, 'suffixIcon' | 'className'> {
   name?: string;
@@ -30,6 +27,7 @@ interface InputRef {
   focus: () => void;
 }
 
+// eslint-disable-next-line react/display-name
 const AppDatePicker = React.forwardRef<InputRef, AppDatePickerProps>((props, ref) => {
   const {
     name,
@@ -71,7 +69,7 @@ const AppDatePicker = React.forwardRef<InputRef, AppDatePickerProps>((props, ref
           {labelSuffix && <span className="ml-4 ">{labelSuffix}</span>}
         </label>
       )}
-      <DatePicker
+      {/* <DatePicker
         style={{ width: '100%' }}
         className={` rounded-radius-m p-12 hover:border-primary-500 ${datePickerClassName}`}
         popupClassName={popupClassName}
@@ -89,7 +87,7 @@ const AppDatePicker = React.forwardRef<InputRef, AppDatePickerProps>((props, ref
           )
         }
         {...restProps}
-      />
+      /> */}
     </div>
   );
 });
