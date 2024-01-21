@@ -92,6 +92,7 @@ textarea:focus, input:focus{
 
     
     --common-1000: #{toRGB(#FFFFFF)};
+    --common-0: #{toRGB(#1F242C)};
   }
 }
 
@@ -148,7 +149,20 @@ textarea:focus, input:focus{
 .body-text-medium {
   @include body(theme('fontSize.20'), theme('lineHeight.32'), theme('fontWeight.medium'));
 }
+.body-text-24-bold {
+  @include body(theme('fontSize.24'), theme('lineHeight.28'), theme('fontWeight.bold'));
+}
 
+.body-text-24-semibold {
+  @include body(theme('fontSize.24'), theme('lineHeight.32'), theme('fontWeight.semibold'));
+}
+
+.body-text-24-medium {
+  @include body(theme('fontSize.24'), theme('lineHeight.32'), theme('fontWeight.medium'));
+}
+.body-text-24-regular {
+  @include body(theme('fontSize.24'), theme('lineHeight.32'), theme('fontWeight.normal'));
+}
 .body-text-18-bold {
   @include body(theme('fontSize.18'), theme('lineHeight.28'), theme('fontWeight.bold'));
 }
@@ -160,7 +174,9 @@ textarea:focus, input:focus{
 .body-text-18-medium {
   @include body(theme('fontSize.18'), theme('lineHeight.28'), theme('fontWeight.medium'));
 }
-
+.body-text-18-regular {
+  @include body(theme('fontSize.18'), theme('lineHeight.28'), theme('fontWeight.normal'));
+}
 .body-text-16-bold {
   @include body(theme('fontSize.16'), theme('lineHeight.24'), theme('fontWeight.bold'));
 }
@@ -172,7 +188,9 @@ textarea:focus, input:focus{
 .body-text-16-medium {
   @include body(theme('fontSize.16'), theme('lineHeight.24'), theme('fontWeight.medium'));
 }
-
+.body-text-16-regular {
+  @include body(theme('fontSize.16'), theme('lineHeight.24'), theme('fontWeight.normal'));
+}
 .body-text-14-bold {
   @include body(theme('fontSize.14'), theme('lineHeight.20'), theme('fontWeight.bold'));
 }
@@ -184,7 +202,9 @@ textarea:focus, input:focus{
 .body-text-14-medium {
   @include body(theme('fontSize.14'), theme('lineHeight.20'), theme('fontWeight.medium'));
 }
-
+.body-text-14-regular {
+  @include body(theme('fontSize.14'), theme('lineHeight.20'), theme('fontWeight.normal'));
+}
 .body-text-12-bold {
   @include body(theme('fontSize.12'), theme('lineHeight.16'), theme('fontWeight.bold'));
 }
@@ -196,7 +216,9 @@ textarea:focus, input:focus{
 .body-text-12-medium {
   @include body(theme('fontSize.12'), theme('lineHeight.16'), theme('fontWeight.medium'));
 }
-
+.body-text-12-regular {
+  @include body(theme('fontSize.12'), theme('lineHeight.16'), theme('fontWeight.normal'));
+}
 .body-text-10-bold {
   @include body(theme('fontSize.10'), theme('lineHeight.12'), theme('fontWeight.bold'));
 }
@@ -207,4 +229,7 @@ textarea:focus, input:focus{
 
 .body-text-10-medium {
   @include body(theme('fontSize.10'), theme('lineHeight.12'), theme('fontWeight.medium'));
+}
+.body-text-10-regular {
+  @include body(theme('fontSize.10'), theme('lineHeight.12'), theme('fontWeight.normal'));
 }

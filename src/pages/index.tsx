@@ -1,4 +1,4 @@
-import HomeLayout from '@/layouts/home-layout';
+import AppLayout from '@/layouts/app-layout';
 import { Meta } from '@/layouts/Meta';
 import { AppConfig } from '@/utils/AppConfig';
 
@@ -11,13 +11,13 @@ const Home: NextPageWithLayout = () => {
       <div className="wrap_content_page">
         <div className="content_page">
           <div className="relative">
-            <div className="relative z-10">lllllll</div>
+            <div className="relative z-10">{}</div>
           </div>
         </div>
       </div>
     </>
   );
 };
-Home.Layout = HomeLayout;
+Home.Layout = AppLayout;
 
 export default Home;
