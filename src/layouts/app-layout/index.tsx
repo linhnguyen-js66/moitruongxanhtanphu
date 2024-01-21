@@ -4,11 +4,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { TextBase } from '@/components';
-import Breadcrumb from '@/components/breadcrumb';
-import BreadcrumbItem from '@/components/breadcrumb-item';
 import { ROUTES_MAPPING } from '@/config/routes';
-import { HeaderApp } from '@/layouts/header';
 
 import { FooterApp } from '../footer';
 import Menu from '../menu';
@@ -62,41 +58,17 @@ export default function AppLayout({ children, isHideBreadcrumb = false }: AppLay
   }, [router.asPath, isHideBreadcrumb]);
   return (
     <div className="flex min-h-[100vh] flex-col bg-color-100">
-      <div className="flex flex-1">
+      <div className="flex flex-1 flex-col">
         <Menu ref={refMenu} />
         <div className="wrap_layout">
-          <HeaderApp
+          {/* <HeaderApp
             onClickMenu={() => {
               // @ts-ignore
               refMenu.current?.onShowHideMenu();
             }}
-          />
+          /> */}
           <Content className="px-40 py-12 tablet:px-28">
-            <>
-              {!isHideBreadcrumb && (
-                <div className="wrap_content_page">
-                  <div className="content_page">
-                    <Breadcrumb>
-                      <BreadcrumbItem href="/">{t('text:homepage')}</BreadcrumbItem>
-                      {breadcrumbs &&
-                        breadcrumbs.map((breadcrumb) => (
-                          <BreadcrumbItem key={breadcrumb.href} href={breadcrumb.href}>
-                            {t(breadcrumb.label)}
-                          </BreadcrumbItem>
-                        ))}
-                    </Breadcrumb>
-                    {breadcrumbs && (
-                      <TextBase
-                        className="title1 mt-12 text-color-900"
-                        presetTable="title3"
-                        t18n={breadcrumbs[breadcrumbs?.length - 1]?.label}
-                      />
-                    )}
-                  </div>
-                </div>
-              )}
-              {children}
-            </>
+            <>{children}</>
           </Content>
         </div>
       </div>

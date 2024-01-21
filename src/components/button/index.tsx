@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import type { IconSvgTypes } from '@/assets/svg';
+import { IconSvgLocal } from '@/components/icon-vec-local';
 import type { I18nKeys } from '@/utils/i18n/locales';
-
-import { IconSvgLocal } from '../icon-vec-local';
 
 interface idPropButton extends React.HTMLAttributes<HTMLDivElement> {
   type?: 'primary' | 'secondary' | 'ghost' | 'whiteGhost';
