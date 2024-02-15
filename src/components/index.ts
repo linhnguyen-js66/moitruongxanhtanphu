@@ -12,6 +12,7 @@ import AppRadio from './radio';
 import { AppSwitch, AppSwitchControl } from './switch';
 import { TextBase } from './text';
 import { AppTextField, AppTextFieldControl } from './text-field';
+import { TextStroke } from './text-stroke';
 import WrapStyle from './wrap-style';
 
 export {
@@ -32,6 +33,7 @@ export {
   List,
   LoadingProgress,
   TextBase,
+  TextStroke,
   WrapStyle
 };
 

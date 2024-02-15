@@ -2,6 +2,7 @@ import type { LayoutProps } from 'antd';
 import { Layout } from 'antd';
 import { useRef } from 'react';
 
+import { FooterApp } from '../footer';
 import MenuCustom from '../menu';
 
 const { Content } = Layout;
@@ -20,12 +21,12 @@ export default function HomeLayout({ children }: LayoutProps) {
               refMenu.current?.onShowHideMenu();
             }}
           /> */}
-          <Content className="bg_home_content px-40 py-12 tablet:px-28">
+          <Content>
             <>{children}</>
           </Content>
         </div>
       </div>
-      {/* <FooterApp /> */}
+      <FooterApp />
     </div>
   );
 }

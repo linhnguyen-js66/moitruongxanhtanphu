@@ -7,7 +7,7 @@ const bundleAnalyzer = withBundleAnalyzer({
 
 /** @type {import('next').NextConfig} */
 export default bundleAnalyzer({
-  output:"export",
+ // output:"export",
   eslint: {
     // dirs: ['.'],
     ignoreDuringBuilds: true,

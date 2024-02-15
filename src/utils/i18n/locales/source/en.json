@@ -14,7 +14,17 @@
     "partner": "Partners",
     "process": "Processing Workflow",
     "media": "Media",
-    "language": "Language"
+    "language": "Language",
+    "company": "The Green Environment",
+    "des_company": "We are committed to environmental protection through advanced and safe industrial waste treatment solutions.",
+    "contact_now": "Contact now",
+    "recycle": "Recycle",
+    "vision": "Vision",
+    "mission": "Mission",
+    "value": "Core Values",
+    "des_vision": "Becoming one of the leading waste recycling businesses in Southeast Asia",
+    "des_mission": "Contributing to reducing environmental pollution from plastic waste in Vietnam",
+    "des_value": "Integrity - Quality - Innovation - Environmental Responsibility - Sustainability"
   },
   "alert": {},
   "validate": {}

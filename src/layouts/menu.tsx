@@ -99,6 +99,7 @@ const Component = forwardRef((props, ref) => {
   const toggleCollapsed = useCallback(() => {
     setCollapsed(!collapsed);
   }, [collapsed]);
+
   const menuInMobile = useCallback(() => {
     return (
       <div onClick={toggleCollapsed}>
