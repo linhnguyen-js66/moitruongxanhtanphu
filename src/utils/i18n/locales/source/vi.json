@@ -6,6 +6,7 @@
     "project": "Dự án",
     "services": "Dịch vụ",
     "contact": "Liên hệ",
+    "news": "Tin tức",
     "vietnamese": "Tiếng Việt",
     "english": "Tiếng Anh",
     "table": "Mục lục",
@@ -24,7 +25,18 @@
     "value": "Giá trị cốt lõi",
     "des_vision": "Trở thành một trong những doanh nghiệp tái chế rác thải hàng đầu tại Đông Nam Á",
     "des_mission": "Góp phần giảm thiểu ô nhiễm môi trường từ rác thải nhựa tại Việt Nam",
-    "des_value": "Uy Tín - Chất Lượng - Sáng Tạo - Môi Trường - Bền Vững"
+    "des_value": "Uy Tín - Chất Lượng - Sáng Tạo - Môi Trường - Bền Vững",
+    "email": "Email",
+    "address": "Địa chỉ",
+    "address_first": "Nhà máy tiêu huỷ hàng hoá Quận Gò Vấp - TP.Hồ Chí Minh",
+    "address_second": "Nhà máy khu vực miền Nam Tỉnh Bà Rịa - Vũng Tàu",
+    "address_third": "Nhà máy khu vực miền Bắc Tỉnh Hải Dương",
+    "slogan_home": "Hãy cùng chúng tôi",
+    "fight": "bảo vệ",
+    "for": "",
+    "environment": "môi trường",
+    "slogan_home_body": "Công ty Môi Trường Xanh Tân Phú, đơn vị tiên phong trong lĩnh vực tiêu huỷ hàng hóa, dẫn dắt sứ mệnh bảo vệ môi trường",
+    "learn_more": "Tìm hiểu"
   },
   "alert": {},
   "validate": {}

@@ -14,7 +14,7 @@ interface AppLayoutProps extends LayoutProps {
 export default function AppLayout({ children }: AppLayoutProps) {
   const refMenu = useRef(null);
   return (
-    <div className="flex min-h-[100vh] flex-col bg-color-100">
+    <div className="flex min-h-[100vh] flex-col justify-between bg-common-1000">
       <div className="flex flex-1 flex-col">
         <Menu ref={refMenu} />
         <div className="wrap_layout">

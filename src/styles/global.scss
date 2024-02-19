@@ -11,8 +11,9 @@ textarea:focus, input:focus{
 
 
 @tailwind components;
+@import "./pages/home.scss";
 @import "./fonts.scss";
-
+@import "./pages/menu.scss";
 @import "./components/buttons.scss";
 @import "./components/dialog.scss";
 @import "./components/radio.scss";
@@ -28,10 +29,9 @@ textarea:focus, input:focus{
 @import "./components/footer.scss";
 @import "./components/custom-slide.scss";
 @import "./components/loading.scss";
-
+@import "./components/toggle.scss";
 
 @import "./custom_theme.scss";
-
 @tailwind utilities;
 
 ::-webkit-scrollbar {
@@ -63,19 +63,19 @@ textarea:focus, input:focus{
     // font-family: 'Lato';
     // To use below color variable in css or scss, use following syntax: rgb(var(--color-name))
     //Ex: rgb(var(--primary-50)) --> rgb(255,249,230)
-    // --text-primary: #{toRGB(#313442)};
+    --text-primary: #{toRGB(#0000)};
     //🔥🔥🔥🔥🔥🔥 DESIGN SYSTEM 🔥🔥🔥🔥🔥🔥
-    --primary-800: #{toRGB(#2A660A)};
-    --primary-700: #{toRGB(#4F881E)};
-    --primary-600: #{toRGB(#639B27)};
-    --primary-500: #{toRGB(#77AF31)};
-    --primary-400: #{toRGB(#87BF38)};
-    --primary-300: #{toRGB(#99C858)};
-    --primary-200: #{toRGB(#ABD277)};
-    --primary-100: #{toRGB(#C3DF9E)};
-    --primary-50: #{toRGB(#DBECC4)};
+    --primary-800: #{toRGB(#1B4537)};
+    --primary-700: #{toRGB(#2A660A)};
+    --primary-600: #{toRGB(#4F881E)};
+    --primary-500: #{toRGB(#639B27)};
+    --primary-400: #{toRGB(#77AF31)};
+    --primary-300: #{toRGB(#C9D1B3)};
+    --primary-200: #{toRGB(#E4F2CD)};
+    --primary-100: #{toRGB(#DAE4C2)};
+    --primary-50: #{toRGB(#E0EEC9)};
 
-    --color-900: #{toRGB(#0D0D0D)};
+    --color-900: #{toRGB(#222222)};
     --color-800: #{toRGB(#2E2E2E)};
     --color-700: #{toRGB(#4C4C4C)};
     --color-600: #{toRGB(#5E5E5E)};
@@ -137,7 +137,60 @@ textarea:focus, input:focus{
   line-height: $line-height;
   font-weight: $font-weight;
 }
+.body-text-64-bold {
+  @include body(theme('fontSize.64'), theme('lineHeight.72'), theme('fontWeight.bold'));
+}
 
+.body-text-64-semibold {
+  @include body(theme('fontSize.64'), theme('lineHeight.72'), theme('fontWeight.semibold'));
+}
+
+.body-text-64-medium {
+  @include body(theme('fontSize.64'), theme('lineHeight.72'), theme('fontWeight.medium'));
+}
+.body-text-64-regular {
+  @include body(theme('fontSize.64'), theme('lineHeight.72'), theme('fontWeight.normal'));
+}
+.body-text-64-light {
+  @include body(theme('fontSize.64'), theme('lineHeight.72'), theme('fontWeight.light'));
+}
+.body-text-48-bold {
+  @include body(theme('fontSize.48'), theme('lineHeight.56'), theme('fontWeight.bold'));
+}
+
+.body-text-48-semibold {
+  @include body(theme('fontSize.48'), theme('lineHeight.56'), theme('fontWeight.semibold'));
+}
+
+.body-text-48-medium {
+  @include body(theme('fontSize.48'), theme('lineHeight.56'), theme('fontWeight.medium'));
+}
+.body-text-48-regular {
+  @include body(theme('fontSize.48'), theme('lineHeight.56'), theme('fontWeight.normal'));
+}
+.body-text-48-light {
+  @include body(theme('fontSize.48'), theme('lineHeight.56'), theme('fontWeight.light'));
+}
+///
+/// 
+.body-text-32-bold {
+  @include body(theme('fontSize.32'), theme('lineHeight.48'), theme('fontWeight.bold'));
+}
+
+.body-text-32-semibold {
+  @include body(theme('fontSize.32'), theme('lineHeight.48'), theme('fontWeight.semibold'));
+}
+
+.body-text-32-medium {
+  @include body(theme('fontSize.32'), theme('lineHeight.48'), theme('fontWeight.medium'));
+}
+.body-text-32-regular {
+  @include body(theme('fontSize.32'), theme('lineHeight.48'), theme('fontWeight.normal'));
+}
+.body-text-32-light {
+  @include body(theme('fontSize.32'), theme('lineHeight.48'), theme('fontWeight.light'));
+}
+////
 .body-text {
   @include body(theme('fontSize.20'), theme('lineHeight.32'), theme('fontWeight.bold'));
 }
@@ -163,6 +216,9 @@ textarea:focus, input:focus{
 .body-text-24-regular {
   @include body(theme('fontSize.24'), theme('lineHeight.32'), theme('fontWeight.normal'));
 }
+.body-text-24-light {
+  @include body(theme('fontSize.24'), theme('lineHeight.32'), theme('fontWeight.light'));
+}
 .body-text-18-bold {
   @include body(theme('fontSize.18'), theme('lineHeight.28'), theme('fontWeight.bold'));
 }
@@ -176,6 +232,9 @@ textarea:focus, input:focus{
 }
 .body-text-18-regular {
   @include body(theme('fontSize.18'), theme('lineHeight.28'), theme('fontWeight.normal'));
+}
+.body-text-18-light {
+  @include body(theme('fontSize.18'), theme('lineHeight.28'), theme('fontWeight.light'));
 }
 .body-text-16-bold {
   @include body(theme('fontSize.16'), theme('lineHeight.24'), theme('fontWeight.bold'));
@@ -191,6 +250,9 @@ textarea:focus, input:focus{
 .body-text-16-regular {
   @include body(theme('fontSize.16'), theme('lineHeight.24'), theme('fontWeight.normal'));
 }
+.body-text-16-light {
+  @include body(theme('fontSize.16'), theme('lineHeight.24'), theme('fontWeight.light'));
+}
 .body-text-14-bold {
   @include body(theme('fontSize.14'), theme('lineHeight.20'), theme('fontWeight.bold'));
 }
@@ -204,6 +266,9 @@ textarea:focus, input:focus{
 }
 .body-text-14-regular {
   @include body(theme('fontSize.14'), theme('lineHeight.20'), theme('fontWeight.normal'));
+}
+.body-text-14-light {
+  @include body(theme('fontSize.14'), theme('lineHeight.20'), theme('fontWeight.light'));
 }
 .body-text-12-bold {
   @include body(theme('fontSize.12'), theme('lineHeight.16'), theme('fontWeight.bold'));
@@ -219,6 +284,9 @@ textarea:focus, input:focus{
 .body-text-12-regular {
   @include body(theme('fontSize.12'), theme('lineHeight.16'), theme('fontWeight.normal'));
 }
+.body-text-12-light {
+  @include body(theme('fontSize.12'), theme('lineHeight.16'), theme('fontWeight.light'));
+}
 .body-text-10-bold {
   @include body(theme('fontSize.10'), theme('lineHeight.12'), theme('fontWeight.bold'));
 }
@@ -233,7 +301,9 @@ textarea:focus, input:focus{
 .body-text-10-regular {
   @include body(theme('fontSize.10'), theme('lineHeight.12'), theme('fontWeight.normal'));
 }
-
+.body-text-10-light {
+  @include body(theme('fontSize.10'), theme('lineHeight.12'), theme('fontWeight.light'));
+}
 .stroke {
   margin: 0;
   font-family: arial;

@@ -8,6 +8,7 @@
     "contact": "Contact",
     "english": "English",
     "vietnamese": "VietNamese",
+    "news": "News",
     "table": "Table of Contents",
     "about_comp": "About Us",
     "field_active": "Scope of Activities",
@@ -24,7 +25,18 @@
     "value": "Core Values",
     "des_vision": "Becoming one of the leading waste recycling businesses in Southeast Asia",
     "des_mission": "Contributing to reducing environmental pollution from plastic waste in Vietnam",
-    "des_value": "Integrity - Quality - Innovation - Environmental Responsibility - Sustainability"
+    "des_value": "Integrity - Quality - Innovation - Environmental Responsibility - Sustainability",
+    "email": "Email",
+    "address": "Address",
+    "address_first": "Go Vap District Waste Disposal Plant - Ho Chi Minh City",
+    "address_second": "Southern Region Factory - Ba Ria - Vung Tau Province",
+    "address_third": "Northern Region Factory - Hai Duong Province",
+    "slogan_home": "Join us in the",
+    "fight": "fight",
+    "for": "for",
+    "environment": "the environment",
+    "slogan_home_body": "Tan Phu Green Environment Company, a leader in goods disposal, driving the mission of environmental protection",
+    "learn_more": "Learn more"
   },
   "alert": {},
   "validate": {}

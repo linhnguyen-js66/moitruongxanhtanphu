@@ -30,6 +30,7 @@ module.exports = {
       40: '2.5rem',
       44: '2.75rem',
       48: '3rem',
+      64: '4rem',
     },
     lineHeight: {
       12: '12px', // Ex: leading-12
@@ -46,6 +47,7 @@ module.exports = {
       56: '56px',
       60: '60px',
       64: '64px',
+      72: '72px',
     },
     spacing: {
       0: '0px',
@@ -87,6 +89,8 @@ module.exports = {
       'radius-xl': '16px',
       'radius-xxl': '16px',
       'radius-xxxl': '24px',
+      'radius-4xl': '32px',
+      'radius-5xl': '36px',
     },
     boxShadow: {
       none: 'none',

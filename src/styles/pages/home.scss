@@ -1,0 +1,100 @@
+/* Trong file CSS của bạn */
+.image-container {
+  /* Chiều rộng và chiều cao phù hợp với viewBox của SVG */
+  width: 206px;
+  height: 303px;
+  background-image: url('https://images.unsplash.com/photo-1707897882296-86d699d1310e?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHx8');
+  background-size: cover;
+  /* Áp dụng clip-path dùng SVG. Thay thế 'yourClipPathData' bằng dữ liệu path của bạn */
+  clip-path: url('../../assets/svg/ic-frame.svg#imageClip');
+  //clip-path: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 206 303'%3E%3Cdefs%3E%3CclipPath id='customClip'%3E%3Cpath d='M32 0.5H173.419C191.038 0.5 205.231 14.9507 204.914 32.5665L203.13 131.749C203.053 136.036 200.655 139.943 196.868 141.953C188.336 146.48 187.707 158.467 195.718 163.862L197.393 164.99C200.911 167.359 203.052 171.294 203.131 175.534L204.894 270.415C205.222 288.038 191.026 302.5 173.4 302.5H32C14.603 302.5 0.5 288.397 0.5 271V175.852C0.5 171.452 2.77057 167.364 6.5057 165.038L8.14529 164.017C16.5877 158.761 15.9575 146.271 7.02886 141.891C3.03263 139.931 0.5 135.867 0.5 131.416V32C0.5 14.603 14.603 0.5 32 0.5Z'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E#customClip");
+}
+.card {
+  width: 340px;
+  height: 500px;
+  background-color: #ffffff;
+  border-radius: 32px;
+  overflow: hidden;
+  position: relative;
+}
+
+.card::before {
+  content: "";
+  width: 64px;
+  height: 64px;
+  background-color: transparent;
+  position: absolute;
+  right: -4px;
+  bottom: 86px;
+  border-bottom-right-radius: 64px;
+  box-shadow: 0 20px 0 0 #ffffff;
+}
+
+.card::after {
+  content: "";
+  width: 64px;
+  height: 64px;
+  background-color: transparent;
+  position: absolute;
+  right: 86px;
+  bottom: -4px;
+  border-bottom-right-radius: 64px;
+  box-shadow: 20px 0 0 0 #ffffff;
+}
+
+.card .shape {
+  width: 80px;
+  height: 80px;
+  background-color: red;
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  z-index: 99;
+  border-radius: 50%;
+}
+
+.card .shape::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 80px solid transparent;
+  border-right: 80px solid #ffffff;
+  border-bottom: 80px solid #ffffff;
+  border-left: 80px solid transparent;
+  position: absolute;
+  right: -32px;
+  bottom: -32px;
+}
+
+.zoom {
+  width: 80px;
+  height: 80px;
+  background-color: #ffff;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 99;
+  border-radius: 50%;
+  border: solid 2px #000;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+}
+
+.card-img {
+  width: 340px;
+  height: 500px;
+  margin: 5em 2em;
+  background: 
+  radial-gradient(ellipse at left center, transparent, transparent 10px, black 10px, black),
+  radial-gradient(ellipse at right center, transparent, transparent 10px, black 10px, black);
+  background-size: 50% 100%, 50% 100%;
+  background-repeat: no-repeat;
+  background-position: left, right;
+  border-radius: 36px;
+  position: relative;
+}
+
+

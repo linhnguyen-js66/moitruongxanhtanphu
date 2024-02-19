@@ -1,5 +1,5 @@
 import type { MenuProps } from 'antd';
-import { Divider, Drawer, Dropdown, Space } from 'antd';
+import { Button, Divider, Drawer, Space } from 'antd';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import type { ReactNode } from 'react';
@@ -18,6 +18,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import type { IconSvgTypes } from '@/assets/svg';
 import { ButtonBase, IconSvgLocal, TextBase } from '@/components';
+import { Toggle } from '@/components/toggle';
 import { ROUTES } from '@/config/routes';
 import { selectLanguage, setLanguage } from '@/stores/globalSlice';
 import { changeLanguage } from '@/utils/i18n/i18n';
@@ -49,24 +50,19 @@ const Component = forwardRef((props, ref) => {
   const menuData: MenuNav[] = useMemo(
     () => [
       {
-        label: <TextBase t18n="text:home" />,
+        label: 'text:home',
         link: ROUTES.HOME,
+        ic: 'IC_HOME',
       },
       {
-        label: <TextBase t18n="text:about" />,
+        label: 'text:about',
         link: ROUTES.ABOUT,
+        ic: 'IC_PROJECT',
       },
       {
-        label: <TextBase t18n="text:project" />,
+        label: 'text:news',
         link: ROUTES.PROJECT,
-      },
-      {
-        label: <TextBase t18n="text:services" />,
-        link: ROUTES.SERVICES,
-      },
-      {
-        label: <TextBase t18n="text:contact" />,
-        link: ROUTES.CONTACT,
+        ic: 'IC_NEWS',
       },
     ],
     [keyActive]
@@ -158,9 +154,9 @@ const Component = forwardRef((props, ref) => {
     );
   }, [collapsed, keyActive, language, menuData, t, toggleCollapsed]);
   return (
-    <div className="flex flex-row items-center justify-around bg-common-1000 py-16 tablet:justify-between tablet:px-36 mobile:justify-between mobile:px-36">
+    <div className="flex flex-row items-center justify-between bg-common-1000 px-32 py-8 tablet:justify-between tablet:px-36 mobile:justify-between mobile:px-36">
       <div>
-        <IconSvgLocal name="IC_LOGO_TP" classNames="h-[42px] mobile:h-[36px]" />
+        <IconSvgLocal name="IC_LOGO_TP" classNames="h-[84px] mobile:h-[64px]" />
       </div>
       <div className="flex items-center tablet:hidden mobile:hidden">
         {menuData?.map((e: any, i: number) => {
@@ -170,12 +166,26 @@ const Component = forwardRef((props, ref) => {
               key={i}
               className={`${keyActive == e?.link ? activeClassName : inactiveClassName}`}
             >
-              <div className="pr-32">{e?.label}</div>
+              <Toggle
+                className="mr-28"
+                checked={keyActive == e?.link}
+                onToggle={() => {}}
+                label={e?.label}
+                isTranslate
+                handleDiameter={32}
+                height={36}
+                checkedHandleIcon={<IconSvgLocal name={e?.ic} classNames="h-16" />}
+                uncheckedHandleIcon={<IconSvgLocal name={e?.ic} classNames="h-16" />}
+                onColor="#DAE4C2"
+                textActive="#383838"
+                textColor="#383838"
+                offColor="#EFEFEF"
+              />
             </Link>
           );
         })}
       </div>
-      <Dropdown menu={{ items: optionLanguage, onClick }} className="tablet:hidden mobile:hidden">
+      {/* <Dropdown menu={{ items: optionLanguage, onClick }} className="tablet:hidden mobile:hidden">
         <div onClick={(e) => e.preventDefault()} className="flex items-center">
           <IconSvgLocal
             name={language == 'vi' ? 'IC_VIETNAM' : 'IC_ENGLISH'}
@@ -184,7 +194,14 @@ const Component = forwardRef((props, ref) => {
           <div className="body-text-16-regular px-8 text-text-primary">{t('text:language')}</div>
           <IconSvgLocal name="IC_ARROW_DOWN" classNames="h-[16px] mobile:h-[12px]" />
         </div>
-      </Dropdown>
+      </Dropdown> */}
+      <Button
+        className="h-36 rounded-radius-xxxl bg-color-900 px-24 hover:text-text-primary tablet:hidden tablet:h-32 mobile:hidden mobile:h-28"
+        name="contactNow"
+        onClick={() => {}}
+      >
+        <TextBase className="text-common-1000" t18n="text:contact" preset="body-text-16-regular" />
+      </Button>
       <div className="hidden tablet:block mobile:block">{menuInMobile()}</div>
     </div>
   );

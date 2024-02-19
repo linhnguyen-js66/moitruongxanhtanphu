@@ -11,16 +11,10 @@ export default function HomeLayout({ children }: LayoutProps) {
   const refMenu = useRef(null);
 
   return (
-    <div className="min-h-[100vh] bg-color-100">
+    <div className="flex min-h-[100vh] flex-col justify-between bg-common-1000">
       <div className="bg_home_page flex flex-col">
         <MenuCustom ref={refMenu} />
         <div className="wrap_layout">
-          {/* <HeaderApp
-            onClickMenu={() => {
-              // @ts-ignore
-              refMenu.current?.onShowHideMenu();
-            }}
-          /> */}
           <Content>
             <>{children}</>
           </Content>
