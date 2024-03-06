@@ -1,0 +1,10 @@
+.fade-animation {
+  width: 100%;
+  height: auto;
+  animation: fadeIn 1.5s ease-in-out forwards; /* Đặt animation cho ảnh */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; } /* Bắt đầu từ mờ */
+  to { opacity: 1; } /* Kết thúc ở rõ */
+}

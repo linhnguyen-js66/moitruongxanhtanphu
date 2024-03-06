@@ -7,33 +7,32 @@
 .card-img::before {
   content: "";
   position: absolute;
-  right: -30px; /* Điều chỉnh để ellipse nằm ngay tại cạnh phải của `.card-img` */
+  right: -40px; /* Điều chỉnh để ellipse nằm ngay tại cạnh phải của `.card-img` */
   top: 50%;
   transform: translateY(-50%) rotate(90deg);
   width: 40px; /* Điều chỉnh chiều rộng của ellipse */
   height: 80px; /* Điều chỉnh chiều cao của ellipse */
-  background-color: #ffff; /* Màu của ellipse */
+  background-color: #ECECEC; /* Màu của ellipse */
   border-radius: 50%; /* Làm cho các góc trở nên tròn để tạo ra hình ellipse */
+  z-index: 88;
 }
 .card-img::after {
   content: "";
   position: absolute;
-  left: -30px; /* Điều chỉnh để ellipse nằm ngay tại cạnh phải của `.card-img` */
+  left: -40px; /* Điều chỉnh để ellipse nằm ngay tại cạnh phải của `.card-img` */
   top: 50%;
   transform: translateY(-50%) rotate(90deg);
   width: 40px; /* Điều chỉnh chiều rộng của ellipse */
   height: 80px; /* Điều chỉnh chiều cao của ellipse */
-  background-color: #ffff; /* Màu của ellipse */
+  background-color: #ECECEC; /* Màu của ellipse */
   border-radius: 50%; /* Làm cho các góc trở nên tròn để tạo ra hình ellipse */
+  z-index: 88;
 }
 .image-container {
 
   width: 100%;
   overflow: hidden;
   position: relative;
-  > div {
-    position: unset !important;
-  }
 
   .img-home {
     object-fit: contain;
@@ -84,10 +83,6 @@
   width: 100%;
   overflow: hidden;
   position: relative;
-  > div {
-    position: unset !important;
-  }
-
   .img-inner {
     object-fit:cover;
     width: 100% !important;
@@ -95,25 +90,41 @@
   }
 }
 
-
-
-
-// .img-custom {
-//   /* Đảm bảo kích thước của container phù hợp */
-//   width: 100%; /* Hoặc bạn có thể đặt chiều rộng cố định */
-//   aspect-ratio: 1 / 1; /* Tạo tỷ lệ hình vuông */
-//   display: flex; /* Sử dụng flex để căn giữa hình ảnh */
-//   justify-content: center;
-//   align-items: center;
-//   overflow: hidden; /* Ẩn phần hình ảnh nằm ngoài kích thước container */
-//   > div {
-//     position: unset !important;
-//   }
-// .img-inner {
-//   object-fit: cover; /* Đảm bảo hình ảnh phủ đầy container mà không làm méo */
-//   width: 100%; /* Đảm bảo hình ảnh phủ đầy chiều rộng của container */
-//   height: 100%; /* Đảm bảo hình ảnh phủ đầy chiều cao của container */
-// }
-// }
-
+.background-btn-project:hover{
+  background: transparent !important;
+}
+.background-btn-about:hover{
+  border: 1px solid transparent!important;
+}
+.frame-white-bg{
+  background-color: #ffff;
+  overflow-y: hidden;
+  position: relative;
+  border-radius: 12px;
+  &::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 25px; /* Điều chỉnh chiều rộng của ellipse */
+    height: 25px; /* Điều chỉnh chiều cao của ellipse */
+    background-color: #DAE4C2 !important; /* Màu của ellipse */
+    border-radius: 4px;/* Làm cho các góc trở nên tròn để tạo ra hình ellipse */
+    display: block;
+    right: 20px;
+    //clip-path: polygon(-50% 70%, 100% -10%, 100% 50%, 70% 100%, 0 100%, 0 50%);
+    
+  }
+  &::before{
+    content: "";
+    position: absolute;
+    top: 20px;
+    width: 25px; /* Điều chỉnh chiều rộng của ellipse */
+    height: 25px; /* Điều chỉnh chiều cao của ellipse */
+    background-color: #DAE4C2 !important; /* Màu của ellipse */
+    border-radius: 4px;/* Làm cho các góc trở nên tròn để tạo ra hình ellipse */
+    display: block;
+    right: 0;
+    //clip-path: polygon(-50% 70%, 100% -10%, 100% 50%, 70% 100%, 0 100%, 0 50%); 
+  }
+}
 

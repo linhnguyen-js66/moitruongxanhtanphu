@@ -4,6 +4,7 @@ import isEqual from 'react-fast-compare';
 import { HeaderHome } from './[header]';
 import { BodyHome } from './[header]/[body]';
 import { FooterHome } from './[header]/[body]/[footer]';
+import { ProjectHighLight } from './project';
 
 const Component = () => {
   return (
@@ -11,6 +12,7 @@ const Component = () => {
       <HeaderHome />
       <BodyHome />
       <FooterHome />
+      <ProjectHighLight />
     </div>
   );
 };

@@ -5,7 +5,9 @@ import IC_ARROW_LEFT from './arrow-left.svg';
 import IC_ARROW_RIGHT from './arrow-right.svg';
 import ICON_EYE_OPEN from './eye-open.svg';
 import ICON_EYE_SPLASH from './eye-splash.svg';
+import IC_FRAME_WHITE from './frame-white.svg';
 import IC_BG_HEADER from './ic-bg-header.svg';
+import IC_CIRCLE from './ic-circle.svg';
 import IC_CLOSE from './ic-close.svg';
 import IC_CORE from './ic-core.svg';
 import IC_ENERGY from './ic-energy.svg';
@@ -70,5 +72,7 @@ export const IconSvgs = {
   IC_HOME_RIGHT,
   IC_ARROW_ITALIC_RIGHT,
   IC_SETTING,
+  IC_FRAME_WHITE,
+  IC_CIRCLE,
 };
 export type IconSvgTypes = keyof typeof IconSvgs;
