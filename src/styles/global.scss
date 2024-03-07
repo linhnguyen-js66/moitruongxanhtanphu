@@ -30,7 +30,6 @@ textarea:focus, input:focus{
 @import "./components/custom-slide.scss";
 @import "./components/loading.scss";
 @import "./components/toggle.scss";
-
 @import "./custom_theme.scss";
 @import "./animation.scss";
 @tailwind utilities;
@@ -305,30 +304,5 @@ textarea:focus, input:focus{
 .body-text-10-light {
   @include body(theme('fontSize.10'), theme('lineHeight.12'), theme('fontWeight.light'));
 }
-.stroke {
-  margin: 0;
-  font-family: arial;
-  font-size:70px;
-  font-weight: bold;
-  }
-  
-  svg {
-    display: block;
-  }
-  
-  text {
-    fill: transparent;
-    stroke: #2A660A;
-    stroke-width: 0.5;
-  }
-  @media screen and (max-width: 1200px) {
-    .stroke {
-      font-size: 50px; /* Adjust font size for tablets */
-    }
-  }
-  
-  @media screen and (max-width: 768px) {
-    .stroke {
-      font-size: 40px; /* Adjust font size for smaller screens */
-    }
-  }
+
+

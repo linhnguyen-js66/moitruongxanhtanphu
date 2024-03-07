@@ -96,35 +96,11 @@
 .background-btn-about:hover{
   border: 1px solid transparent!important;
 }
-.frame-white-bg{
-  background-color: #ffff;
-  overflow-y: hidden;
-  position: relative;
-  border-radius: 12px;
-  &::after{
-    content: "";
-    position: absolute;
-    top: 0;
-    width: 25px; /* Điều chỉnh chiều rộng của ellipse */
-    height: 25px; /* Điều chỉnh chiều cao của ellipse */
-    background-color: #DAE4C2 !important; /* Màu của ellipse */
-    border-radius: 4px;/* Làm cho các góc trở nên tròn để tạo ra hình ellipse */
-    display: block;
-    right: 20px;
-    //clip-path: polygon(-50% 70%, 100% -10%, 100% 50%, 70% 100%, 0 100%, 0 50%);
-    
-  }
-  &::before{
-    content: "";
-    position: absolute;
-    top: 20px;
-    width: 25px; /* Điều chỉnh chiều rộng của ellipse */
-    height: 25px; /* Điều chỉnh chiều cao của ellipse */
-    background-color: #DAE4C2 !important; /* Màu của ellipse */
-    border-radius: 4px;/* Làm cho các góc trở nên tròn để tạo ra hình ellipse */
-    display: block;
-    right: 0;
-    //clip-path: polygon(-50% 70%, 100% -10%, 100% 50%, 70% 100%, 0 100%, 0 50%); 
-  }
-}
 
+
+.semi-circle{
+  border-radius: 50% 50% 0 50%;
+  border-right: transparent;
+  border-bottom: transparent;
+  width: 100%;
+}

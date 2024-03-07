@@ -16,7 +16,7 @@ const Component = () => {
     slidesToShow: 3,
   });
   const typeDevice = useScreenResize();
-  console.log(typeDevice);
+
   useEffect(() => {
     if (typeDevice == 'mobile') {
       setConfigShow({

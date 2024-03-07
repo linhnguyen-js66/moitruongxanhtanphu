@@ -1,30 +1,36 @@
 import IC_LOADING from './IC_LOADING.svg';
 import IC_ARROW_DOWN from './arrow-down.svg';
 import IC_ARROW_ITALIC_RIGHT from './arrow-italic-right.svg';
+import IC_ARROW_ITALIC_V2 from './arrow-italic-v2.svg';
 import IC_ARROW_LEFT from './arrow-left.svg';
 import IC_ARROW_RIGHT from './arrow-right.svg';
 import ICON_EYE_OPEN from './eye-open.svg';
 import ICON_EYE_SPLASH from './eye-splash.svg';
 import IC_FRAME_WHITE from './frame-white.svg';
 import IC_BG_HEADER from './ic-bg-header.svg';
+import IC_CIRCLE_LINEAR from './ic-circle-linear.svg';
 import IC_CIRCLE from './ic-circle.svg';
 import IC_CLOSE from './ic-close.svg';
 import IC_CORE from './ic-core.svg';
 import IC_ENERGY from './ic-energy.svg';
 import IC_ENGLISH from './ic-english.svg';
 import IC_FACEBOOK from './ic-facebook.svg';
+import IC_FEEDBACK from './ic-feedback.svg';
 import IC_FOOTER from './ic-footer.svg';
 import IC_HOME_LEFT from './ic-home-left.svg';
 import IC_HOME_RIGHT from './ic-home-right.svg';
 import IC_HOME from './ic-home.svg';
 import IC_INS from './ic-ins.svg';
 import IC_LINKEDLN from './ic-linkedln.svg';
+import IC_LOGO_HORIZONTAL from './ic-logo-horizontal.svg';
 import IC_MAINTAIN from './ic-maintain.svg';
 import IC_MENU from './ic-menu.svg';
 import IC_MISSION from './ic-mission.svg';
 import IC_NEWS from './ic-news.svg';
+import IC_ONLY_LOGO from './ic-only-logo.svg';
 import IC_PROJECT from './ic-project.svg';
 import IC_SETTING from './ic-setting.svg';
+import IC_TEXT_TP from './ic-text-tp.svg';
 import IC_VIETNAM from './ic-vietnam.svg';
 import IC_VISION from './ic-vision.svg';
 import IC_YOUTUBE from './ic-youtube.svg';
@@ -74,5 +80,11 @@ export const IconSvgs = {
   IC_SETTING,
   IC_FRAME_WHITE,
   IC_CIRCLE,
+  IC_CIRCLE_LINEAR,
+  IC_ONLY_LOGO,
+  IC_TEXT_TP,
+  IC_FEEDBACK,
+  IC_ARROW_ITALIC_V2,
+  IC_LOGO_HORIZONTAL,
 };
 export type IconSvgTypes = keyof typeof IconSvgs;
