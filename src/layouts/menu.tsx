@@ -165,11 +165,12 @@ const Component = forwardRef((props, ref) => {
               href={e.link}
               key={i}
               className={`${keyActive == e?.link ? activeClassName : inactiveClassName}`}
+              // onClick={}
             >
               <Toggle
-                className="mr-28"
+                className="z-50 mr-28"
                 checked={keyActive == e?.link}
-                onToggle={() => {}}
+                onToggle={() => setKeyActive(e?.link)}
                 label={e?.label}
                 isTranslate
                 handleDiameter={32}

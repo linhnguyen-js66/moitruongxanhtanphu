@@ -4,7 +4,7 @@ export const ROUTES = {
   PROJECT: '/project',
   MEDIA: '/media',
   SERVICES: '/services',
-  CONTACT: '/contac',
+  CONTACT: '/contact',
 };
 
 export const ROUTES_MAPPING = {

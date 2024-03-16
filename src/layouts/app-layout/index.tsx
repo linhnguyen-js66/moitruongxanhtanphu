@@ -18,7 +18,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
       <div className="flex flex-1 flex-col">
         <Menu ref={refMenu} />
         <div className="wrap_layout">
-          <Content className="px-40 py-12 tablet:px-28">
+          <Content>
             <>{children}</>
           </Content>
         </div>

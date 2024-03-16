@@ -66,7 +66,7 @@ textarea:focus, input:focus{
     --text-primary: #{toRGB(#0000)};
     //🔥🔥🔥🔥🔥🔥 DESIGN SYSTEM 🔥🔥🔥🔥🔥🔥
     --primary-800: #{toRGB(#1B4537)};
-    --primary-700: #{toRGB(#2A660A)};
+    --primary-700: #{toRGB(#33760E)};
     --primary-600: #{toRGB(#4F881E)};
     --primary-500: #{toRGB(#639B27)};
     --primary-400: #{toRGB(#77AF31)};
@@ -93,6 +93,7 @@ textarea:focus, input:focus{
     
     --common-1000: #{toRGB(#FFFFFF)};
     --common-0: #{toRGB(#1F242C)};
+    --common-500: #{toRGB(#F9FFF0)};
   }
 }
 
