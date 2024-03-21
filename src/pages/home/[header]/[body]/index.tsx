@@ -10,11 +10,11 @@ const Component = () => {
         t18n="text:slogan_home_body"
         preset="body-text-24-light"
         presetMobile="body-text-16-light"
-        className="w-1/3 mobile:mb-24 mobile:w-full mobile:text-center"
+        className="item-animation w-1/3 mobile:mb-24 mobile:w-full mobile:text-center"
       />
       <ButtonBase
         name="learnMore"
-        classNames="bg-primary-200 rounded-[36px] px-32 mobile:mb-24"
+        classNames="bg-primary-200 rounded-[36px] px-32 mobile:mb-24 item-animation"
         customContent={
           <div className="flex items-center">
             <TextBase

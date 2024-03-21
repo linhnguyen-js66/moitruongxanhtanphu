@@ -8,7 +8,7 @@ const Component = () => {
   const { t } = useTranslation();
   const renderMobile = useCallback(() => {
     return (
-      <div className="absolute top-12 flex hidden w-full justify-center px-32 text-center tablet:hidden mobile:block">
+      <div className="fly absolute top-12 flex hidden w-full justify-center px-32 text-center tablet:hidden mobile:block">
         <p className="body-text-32-medium">
           {t('text:slogan_home')}
           <span className="rounded-[36px] bg-primary-200 px-16 py-[2px]">{t('text:fight')}</span>
@@ -18,8 +18,8 @@ const Component = () => {
     );
   }, [t]);
   return (
-    <div className="relative flex flex-1 items-center justify-between">
-      <IconSvgLocal name="IC_HOME_LEFT" height={300} />
+    <div className="fly relative flex flex-1 items-center justify-between">
+      <IconSvgLocal name="IC_HOME_LEFT" height={300} classNames="bound-animation" />
       <div className="flex flex-col items-center justify-center text-center mobile:hidden">
         <div className="flex flex-wrap  justify-center text-center">
           <span>
@@ -69,7 +69,7 @@ const Component = () => {
           </TextBase>
         </div>
       </div>
-      <IconSvgLocal name="IC_HOME_RIGHT" height={300} />
+      <IconSvgLocal name="IC_HOME_RIGHT" height={300} classNames="bound-animation" />
       {renderMobile()}
     </div>
   );

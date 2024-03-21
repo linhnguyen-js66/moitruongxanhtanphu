@@ -10,7 +10,8 @@ import { Slide } from 'react-slideshow-image';
 import { IconSvgLocal, TextBase } from '@/components';
 import useScreenResize from '@/hooks/useScreenResize';
 
-const Component = () => {
+const Component = (props: any) => {
+  const { isActive } = props;
   const [configShow, setConfigShow] = useState({
     slidesToScroll: 3,
     slidesToShow: 3,
@@ -28,7 +29,7 @@ const Component = () => {
   const indicators = (index: any) => <div className="indicator_side" key={index} />;
   const renderHeader = useCallback(() => {
     return (
-      <div className="flex flex-row justify-between mobile:flex-col">
+      <div className={`${isActive ? 'fly' : ''} flex flex-row justify-between mobile:flex-col`}>
         <div className="w-1/4 mobile:mb-16 mobile:w-full">
           <TextBase
             t18n="text:project_content"
@@ -78,19 +79,21 @@ const Component = () => {
         {/* </div> */}
       </div>
     );
-  }, []);
+  }, [isActive]);
   const { t } = useTranslation();
   const renderBody = useCallback(() => {
     return (
       <div className="my-48 mobile:flex mobile:w-full mobile:justify-between">
         <Button
-          className="background-btn-about h-36 rounded-radius-xxxl border-weight-l border-common-0 px-36"
+          className={`background-btn-about ${isActive ? 'item-animation' : ''} h-36 rounded-radius-xxxl border-weight-l border-common-0 px-36`}
           name="btnProject"
           onClick={() => {}}
         >
           <TextBase t18n="text:project" preset="body-text-16-regular" className="text-common-0" />
         </Button>
-        <div className="mt-24 w-[55%] mobile:ml-16 mobile:mt-0 mobile:w-full">
+        <div
+          className={`${isActive ? 'item-animation' : ''} mt-24 w-[55%] mobile:ml-16 mobile:mt-0 mobile:w-full`}
+        >
           <TextBase
             preset="body-text-48-light"
             presetMobile="body-text-24-light"
@@ -102,7 +105,7 @@ const Component = () => {
         </div>
       </div>
     );
-  }, [t]);
+  }, [t, isActive]);
   const buttonViewMore = useCallback(
     (link: string) => (
       <Button
@@ -128,7 +131,9 @@ const Component = () => {
         autoplay={false}
         prevArrow={<div />}
         nextArrow={<div />}
+        infinite={false}
         canSwipe
+        cssClass={`${isActive ? 'fly' : ''}`}
       >
         <div className=" pr-12 mobile:pr-0">
           <div className="flex w-full flex-col rounded-radius-xxxl bg-color-100 p-24">
@@ -186,7 +191,7 @@ const Component = () => {
         </div>
       </Slide>
     );
-  }, [buttonViewMore, configShow.slidesToScroll, configShow.slidesToShow]);
+  }, [buttonViewMore, configShow.slidesToScroll, configShow.slidesToShow, isActive]);
   return (
     <div className="mt-[64px] px-32">
       {renderHeader()}

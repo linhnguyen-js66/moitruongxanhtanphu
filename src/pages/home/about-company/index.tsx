@@ -1,26 +1,34 @@
-import { memo } from 'react';
+import { memo, useMemo, useState } from 'react';
 import isEqual from 'react-fast-compare';
 
 import { TextBase } from '@/components';
 
-const Component = () => {
-  const data = [
-    {
-      amount: 3,
-      title: 'Hơn 3 nhà máy được đặt tại Việt Nam',
-      size: 15,
-    },
-    {
-      amount: 100,
-      title: 'Quy mô hơn 100 nhân viên tại 3 chi nhánh Bắc Trung Nam',
-      size: 30,
-    },
-    {
-      amount: 10,
-      title: '16 công nghệ xử lý rác thải cho nhiều hạng mục khác nhau',
-      size: 25,
-    },
-  ];
+const Component = (props: any) => {
+  const { isCount } = props;
+  const [first, setFirst] = useState(1);
+  const [second, setSecond] = useState(1);
+  const [third, setThird] = useState(1);
+
+  const data = useMemo(
+    () => [
+      {
+        amount: first,
+        title: 'Hơn 3 nhà máy được đặt tại Việt Nam',
+        size: 15,
+      },
+      {
+        amount: second,
+        title: 'Quy mô hơn 100 nhân viên tại 3 chi nhánh Bắc Trung Nam',
+        size: 30,
+      },
+      {
+        amount: third,
+        title: '16 công nghệ xử lý rác thải cho nhiều hạng mục khác nhau',
+        size: 25,
+      },
+    ],
+    [first, second, third]
+  );
   return (
     <div className="relative mx-32 my-[120px] mobile:mt-32">
       <div className="absolute flex size-full items-center justify-center mobile:relative mobile:flex-col">

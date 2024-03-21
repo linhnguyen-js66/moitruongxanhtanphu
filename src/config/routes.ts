@@ -5,6 +5,7 @@ export const ROUTES = {
   MEDIA: '/media',
   SERVICES: '/services',
   CONTACT: '/contact',
+  NEWS: '/news',
 };
 
 export const ROUTES_MAPPING = {
@@ -35,6 +36,11 @@ export const ROUTES_MAPPING = {
   },
   CONTACT: {
     path: '/contact',
+    title: '',
+    breadcrumbTitle: '',
+  },
+  NEWS: {
+    path: '/news',
     title: '',
     breadcrumbTitle: '',
   },

@@ -1,19 +1,16 @@
+import { ChatBox } from '@/components/chatbot/ChatBox';
 import HomeLayout from '@/layouts/home-layout';
 import { Meta } from '@/layouts/Meta';
 import { AppConfig } from '@/utils/AppConfig';
 
-import { HeaderAboutPage } from './header';
-import { MemberList } from './member-list';
-
-const About = () => {
+const News = () => {
   return (
     <>
       <Meta title={AppConfig.title} description={AppConfig.description} />
-      <HeaderAboutPage />
-      <MemberList />
+      <ChatBox />
     </>
   );
 };
 
-About.Layout = HomeLayout;
-export default About;
+News.Layout = HomeLayout;
+export default News;

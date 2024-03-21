@@ -6,10 +6,10 @@ import { IconSvgLocal, TextBase } from '@/components';
 
 const Component = () => {
   return (
-    <div className="fade-animation grid grid-flow-row grid-cols-3 gap-12  px-32 tablet:gap-4 mobile:grid-cols-1 mobile:gap-[2px]">
+    <div className="grid grid-flow-row grid-cols-3 gap-12  px-32 tablet:gap-4 mobile:grid-cols-1 mobile:gap-[2px]">
       {/** Left */}
       <div className="grid grid-flow-row grid-cols-3 items-center justify-items-center gap-12 bg-link-50 tablet:gap-4 mobile:gap-[2px]">
-        <div className="radius-img img-custom aspect-square mobile:aspect-auto mobile:h-full">
+        <div className="radius-img img-custom item-animation aspect-square mobile:aspect-auto mobile:h-full">
           <Image
             fill
             className="img-inner"
@@ -17,7 +17,7 @@ const Component = () => {
             alt="Your Image"
           />
         </div>
-        <div className="relative col-span-2 aspect-square w-full">
+        <div className="item-animation relative col-span-2 aspect-square w-full">
           <div className="radius-img flex flex-col items-center justify-center bg-color-100 p-32 tablet:p-12 mobile:h-1/2 mobile:p-8">
             <TextBase
               className="text-center"
@@ -57,7 +57,7 @@ const Component = () => {
         </div>
       </div>
       {/** Center */}
-      <div className="image-container radius-img">
+      <div className="image-container radius-img item-animation">
         <Image
           fill
           className="img-home"
@@ -66,13 +66,13 @@ const Component = () => {
         />
         <div className="absolute right-[50%] top-0 translate-x-1/2 p-24">
           <div className="rounded-[100%] bg-color-50 p-12">
-            <IconSvgLocal name="IC_SETTING" height={28} />
+            <IconSvgLocal name="IC_SETTING" height={28} classNames="spin-animation" />
           </div>
         </div>
       </div>
       {/** Right */}
       <div className="grid grid-flow-row grid-cols-3 items-center justify-items-center gap-12 tablet:gap-4 mobile:gap-[2px]">
-        <div className="img-custom radius-img col-span-2 aspect-square bg-primary-200">
+        <div className="img-custom radius-img item-animation col-span-2 aspect-square bg-primary-200">
           <Image
             fill
             className="img-inner"
@@ -124,7 +124,7 @@ const Component = () => {
             </div>
           </div>
         </div>
-        <div className="radius-img img-custom aspect-square mobile:aspect-auto mobile:h-full">
+        <div className="radius-img img-custom item-animation aspect-square mobile:aspect-auto mobile:h-full">
           <Image
             fill
             className="img-inner opacity-xl"

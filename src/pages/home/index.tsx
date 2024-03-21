@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import isEqual from 'react-fast-compare';
 
 import { HeaderHome } from './[header]';
@@ -10,15 +10,75 @@ import { PartnerCompany } from './partner';
 import { ProjectHighLight } from './project';
 
 const Component = () => {
+  const bodyHomeRef = useRef(null);
+  const projectHighlightRef = useRef(null);
+  const commentCustomerRef = useRef(null);
+  const aboutCompanyRef = useRef(null);
+  const partnerCompanyRef = useRef(null);
+  const [isAwardScroll, setIsAwardScroll] = useState(false);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsAwardScroll(true);
+            // Phần tử này hiện ra trong viewport, thêm hiệu ứng vào đây
+            entry.target.classList.add('fly');
+            // Ngừng quan sát phần tử sau khi thêm animation
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        rootMargin: '0px',
+        threshold: 0.1, // Phần tử hiển thị 10% mới kích hoạt
+      }
+    );
+
+    // Thêm các phần tử để quan sát
+    if (bodyHomeRef.current) {
+      observer.observe(bodyHomeRef.current);
+    }
+    if (projectHighlightRef.current) {
+      observer.observe(projectHighlightRef.current);
+    }
+    if (commentCustomerRef.current) {
+      observer.observe(commentCustomerRef.current);
+    }
+    if (aboutCompanyRef.current) {
+      observer.observe(aboutCompanyRef.current);
+    }
+    if (partnerCompanyRef.current) {
+      observer.observe(partnerCompanyRef.current);
+    }
+    // Cleanup
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
     <div className="bg-common-1000">
-      <HeaderHome />
-      <BodyHome />
-      <FooterHome />
-      <ProjectHighLight />
-      <CommentCustomer />
-      <AboutCompany />
-      <PartnerCompany />
+      <div className="bg-common-1000">
+        <div ref={bodyHomeRef}>
+          <HeaderHome />
+          <BodyHome />
+          <FooterHome />
+        </div>
+
+        <div ref={projectHighlightRef}>
+          <ProjectHighLight />
+        </div>
+        <div ref={commentCustomerRef}>
+          <CommentCustomer />
+        </div>
+        <div ref={aboutCompanyRef}>
+          <AboutCompany isCount={isAwardScroll} />
+        </div>
+        <div ref={partnerCompanyRef}>
+          <PartnerCompany />
+        </div>
+      </div>
     </div>
   );
 };

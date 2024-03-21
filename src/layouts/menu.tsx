@@ -61,11 +61,11 @@ const Component = forwardRef((props, ref) => {
       },
       {
         label: 'text:news',
-        link: ROUTES.PROJECT,
+        link: ROUTES.NEWS,
         ic: 'IC_NEWS',
       },
     ],
-    [keyActive]
+    []
   );
   const optionLanguage = [
     { label: t('text:vietnamese'), key: 1 },
@@ -101,12 +101,12 @@ const Component = forwardRef((props, ref) => {
       <div onClick={toggleCollapsed}>
         <IconSvgLocal name="IC_MENU" height={32} />
         <Drawer open={collapsed} closable={false}>
-          <Space className="mb-[42px] flex justify-between">
-            <IconSvgLocal name="IC_LOGO_TP" classNames="h-[36px]" />
+          <Space className="mb-[42px] flex items-center justify-between">
+            <IconSvgLocal name="IC_LOGO_V2" height={32} />
             <ButtonBase
               leftIcon="IC_CLOSE"
-              heightIcon={32}
-              widthIcon={32}
+              heightIcon={48}
+              widthIcon={48}
               styles={{ height: 32, borderRadius: 6, backgroundColor: 'transparent' }}
               type="primary"
               onClick={toggleCollapsed}
@@ -122,7 +122,7 @@ const Component = forwardRef((props, ref) => {
                   className={`${keyActive == e?.link ? activeClassName : 'body-text-16-medium mobile:body-text-14-medium text-text-primary'}`}
                 >
                   <div className={`${i == menuData?.length - 1 ? 'mb-4' : 'mb-24'}`}>
-                    {e?.label}
+                    {t(e?.label)}
                   </div>
                 </Link>
               );
@@ -152,7 +152,7 @@ const Component = forwardRef((props, ref) => {
         </Drawer>
       </div>
     );
-  }, [collapsed, keyActive, language, menuData, t, toggleCollapsed]);
+  }, [collapsed, keyActive, language, menuData, onClick, t, toggleCollapsed]);
   return (
     <div className="flex flex-row items-center justify-between bg-common-1000 px-32 py-8 tablet:justify-between tablet:px-36 mobile:justify-between mobile:px-36">
       <div>
@@ -170,7 +170,10 @@ const Component = forwardRef((props, ref) => {
               <Toggle
                 className="z-50 mr-28"
                 checked={keyActive == e?.link}
-                onToggle={() => setKeyActive(e?.link)}
+                onToggle={() => {
+                  setKeyActive(e?.link);
+                  router.push(e.link);
+                }}
                 label={e?.label}
                 isTranslate
                 handleDiameter={32}
@@ -186,16 +189,6 @@ const Component = forwardRef((props, ref) => {
           );
         })}
       </div>
-      {/* <Dropdown menu={{ items: optionLanguage, onClick }} className="tablet:hidden mobile:hidden">
-        <div onClick={(e) => e.preventDefault()} className="flex items-center">
-          <IconSvgLocal
-            name={language == 'vi' ? 'IC_VIETNAM' : 'IC_ENGLISH'}
-            classNames="h-[24px] mobile:h-[18px] tablet:h-[20px]"
-          />
-          <div className="body-text-16-regular px-8 text-text-primary">{t('text:language')}</div>
-          <IconSvgLocal name="IC_ARROW_DOWN" classNames="h-[16px] mobile:h-[12px]" />
-        </div>
-      </Dropdown> */}
       <Button
         className="h-36 rounded-radius-xxxl bg-color-900 px-24 hover:text-text-primary tablet:hidden tablet:h-32 mobile:hidden mobile:h-28"
         name="contactNow"

@@ -44,8 +44,14 @@
     "project_content_last": "Trở thành đơn vị thu gom, xử lý, tái chế rác với công nghệ tiên tiến, hiện đại hàng đầu ở thị trường",
     "project_highlight": "Dự án tiêu biểu",
     "project_content_next": "Chúng tôi nỗ lực bảo vệ thiên nhiên cho các thế hệ tương lai",
-    "vietnam": "Việt Nam"
+    "vietnam": "Việt Nam",
+    "tanphu": "Công ty Môi trường xanh Tân Phú",
+    "hello": "Xin chào!",
+    "support": "Bạn cần được hỗ trợ",
+    "enter_message": "Aa..."
   },
   "alert": {},
-  "validate": {}
+  "validate": {
+    "message_error": "Vui lòng nhập câu trả lời..."
+  }
 }

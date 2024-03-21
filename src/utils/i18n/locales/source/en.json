@@ -44,8 +44,13 @@
     "project_content_next_1": "We strive to protect",
     "project_content_next_2": "nature for future",
     "project_content_next_3": "generations",
-    "vietnam": "Vietnam"
+    "vietnam": "Vietnam",
+    "tanphu": "Tan Phu Green Environment Company",
+    "hello": "Hi!",
+    "enter_message": "Aa..."
   },
   "alert": {},
-  "validate": {}
+  "validate": {
+    "message_error": "Please typing your message..."
+  }
 }

@@ -1,6 +1,9 @@
 import { memo, useCallback } from 'react';
 import isEqual from 'react-fast-compare';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+
+import { selectLanguage } from '@/stores/globalSlice';
 
 import { TextBase } from '../text';
 import { checkedIcon, uncheckedIcon } from './icon';
@@ -24,20 +27,26 @@ const Component = (props: ToggleTypes) => {
     textColor = '#fff',
   } = props;
   const { t } = useTranslation();
-  const getTextWidth = useCallback((text: string, fontSize: number) => {
-    const canvas = document.createElement('canvas');
-    const context = canvas.getContext('2d');
-    context.font = `${fontSize}px Inter`; // Thay đổi font family nếu cần
-    const metrics = context?.measureText(text);
+  const language = useSelector(selectLanguage);
+  const getTextWidth = useCallback(
+    (text: string, fontSize: number) => {
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+      context.font = `${fontSize}px Inter`; // Thay đổi font family nếu cần
+      const metrics = context?.measureText(text);
 
-    return metrics?.width || 0;
-  }, []);
+      return metrics?.width || 0;
+    },
+    [t]
+  );
 
   const renderLabel = useCallback(
     (active?: Boolean) => {
       if (label) {
         return (
-          <div className="flex h-[100%] items-center justify-center">
+          <div
+            className={`flex size-full ${language == 'en' && 'translate-x-1/2'} items-center justify-center`}
+          >
             <TextBase
               id="label-toggle"
               style={{
@@ -53,7 +62,7 @@ const Component = (props: ToggleTypes) => {
       }
       return <div />;
     },
-    [isTranslate, label, t, textActive, textColor]
+    [isTranslate, label, language, t, textActive, textColor]
   );
   if (label) {
     return (
@@ -69,7 +78,7 @@ const Component = (props: ToggleTypes) => {
         activeBocShadow={activeBoxShadow}
         {...props}
         onChange={props?.onToggle}
-        width={getTextWidth(isTranslate ? t(label) : label, 16) + 64}
+        width={getTextWidth(label, 16) + 64}
         height={height}
         checkedHandleIcon={
           <div className="flex h-[100%] items-center justify-center">
