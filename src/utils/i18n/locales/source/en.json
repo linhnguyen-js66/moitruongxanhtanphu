@@ -47,10 +47,38 @@
     "vietnam": "Vietnam",
     "tanphu": "Tan Phu Green Environment Company",
     "hello": "Hi!",
-    "enter_message": "Aa..."
+    "enter_message": "Aa...",
+    "idea_environment": "Green Environment Initiatives at Tan Phu Environment Company",
+    "idea_note": "At Tan Phu Environment Company, we are committed to acting for a sustainable future through leading services in waste management and recycling. Specializing in waste treatment, cutting-edge recycling technology, and environmentally safe disposal methods, we take pride in being pioneers in environmental protection and pollution reduction.",
+    "partner_note": "The Trusted Partner in Environmental Solutions",
+    "partner_des": "Aiming to become a trusted partner in the environmental field, Tan Phu Environment Company continuously enhances service quality and adopts sustainable waste import solutions. We offer comprehensive environmental solutions, from environmental consulting, waste management to recycling, aiming for sustainable development and minimizing negative impacts on our planet.",
+    "vision_view": "With the mission of delivering a greener future for the next generations, Tan Phu Environment Company focuses on implementing cutting-edge recycling technologies and providing professional environmental consultancy.",
+    "member_comp": "Leading-edge technology, a passionate team with high expertise.",
+    "loading": "Loading...",
+    "waste_management": "Waste Management and Recycling",
+    "note_waste_management": "A leading facility specializing in the treatment of solar panel batteries, with the capacity to reclaim and recycle non-ferrous metals in Vietnam",
+    "support_env": "Advisory",
+    "support_env_v2": "Environmental",
+    "sale_env": "Importing Scrap Metal Business",
+    "view_more": "View more",
+    "close": "Close",
+    "content_waste": "In a significant milestone of Phase 1, we are proud to announce the completion and attainment of 14 out of 23 categories in waste treatment and recycling technologies, with approval and licensing from the Ministry of Natural Resources and Environment. As a pioneering entity in this field, we have been granted the authority to process solar panel batteries - a considerable step towards a sustainable recycling future. We are also honored to be the first unit in Vietnam capable of recovering, processing, and recycling non-ferrous metals, with the project expected to be invested in by 2024.",
+    "content_waste_v2": "To serve our recycling and waste treatment goals, we have invested in more than 10 advanced technologies, including a waste incinerator with a capacity of 5 tons/hour, a system for recovering oil from plastic waste with a capacity of 0.83 tons/hour, along with an advanced wastewater treatment system, a battery and electronic component processing system with a capacity of 1.25 tons/hour. These technologies not only enhance recycling efficiency but also ensure a green, clean, and beautiful living environment for the current and future generations.",
+    "content_support": "In a landscape where waste management becomes increasingly crucial for businesses, our environmental consulting services offer in-depth legal support in waste management. From legal assistance in waste management for businesses to legal advice for monitoring and sampling services, we ensure that your business not only complies with all environmental regulations but also leads in environmental protection. Let us help your business enhance waste management efficiency, thereby minimizing legal risks and boosting environmental reputation.",
+    "legal_1": "Legal support in waste management for businesses",
+    "legal_2": "Legal assistance for monitoring and sampling services.",
+    "pld_enter_phone": "Enter mobile number",
+    "phone_number": "Phone Number",
+    "your_company": "Your Company Name",
+    "address_comp": "Your Company Address",
+    "email_comp": "Email Address",
+    "suggest_price": "Quodation"
   },
   "alert": {},
   "validate": {
-    "message_error": "Please typing your message..."
+    "message_error": "Please typing your message...",
+    "error_email": "Email is not valid",
+    "not_empty": "Field is required",
+    "error_phone": "Phone number is not valid"
   }
 }

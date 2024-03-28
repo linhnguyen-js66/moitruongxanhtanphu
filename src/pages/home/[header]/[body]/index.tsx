@@ -1,9 +1,11 @@
+import { useRouter } from 'next/router';
 import { memo } from 'react';
 import isEqual from 'react-fast-compare';
 
 import { ButtonBase, IconSvgLocal, TextBase } from '@/components';
 
 const Component = () => {
+  const router = useRouter();
   return (
     <div className="flex flex-1 items-start justify-between px-32 mobile:flex-col mobile:items-center">
       <TextBase
@@ -14,12 +16,13 @@ const Component = () => {
       />
       <ButtonBase
         name="learnMore"
-        classNames="bg-primary-200 rounded-[36px] px-32 mobile:mb-24 item-animation"
+        onClick={() => router.push('/about')}
+        classNames="bg-primary-200 h-44 rounded-[36px] px-32 mobile:mb-24 item-animation hover:text-color-900 hover:shadow-down-s hover:shadow-color-300"
         customContent={
           <div className="flex items-center">
             <TextBase
               t18n="text:learn_more"
-              preset="body-text-24-light"
+              preset="body-text-16-light"
               presetMobile="body-text-16-light"
             />
             <IconSvgLocal name="IC_ARROW_ITALIC_RIGHT" classNames="h-32 mobile:h-24" />

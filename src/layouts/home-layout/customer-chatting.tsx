@@ -1,33 +1,46 @@
-import Image from 'next/image';
-import { memo } from 'react';
-import isEqual from 'react-fast-compare';
+import { useEffect } from 'react';
 
-import IC_CUSTOMER from '@/assets/image/ic-customer.webp';
-import { TextBase } from '@/components';
+const ZaloChatWidget = () => {
+  useEffect(() => {
+    // Function to load the Zalo SDK script
+    const loadZaloSDK = () => {
+      const script = document.createElement('script');
+      script.src = 'https://sp.zalo.me/plugins/sdk.js';
+      script.async = true;
+      document.body.appendChild(script);
+    };
 
-const Component = () => {
-  return (
-    <div className="flex flex-row items-center">
-      <div className="relative aspect-square overflow-hidden rounded-[100%] bg-primary-50 shadow-down-m shadow-color-100">
-        <Image width={64} height={64} src={IC_CUSTOMER} alt="Your Image" />
-      </div>
-      <div className="ml-12 rounded-radius-4xl bg-color-50 p-16 shadow-down-m shadow-color-100">
-        <div className="flex items-center">
-          <TextBase
-            t18n="text:tanphu"
-            className="text-primary-500"
-            preset="body-text-16-semibold"
-          />
-          ,
-          <div className="w-8" />
-          <TextBase t18n="text:hello" className="text-color-600" preset="body-text-16-regular" />
-        </div>
-        <div>
-          <TextBase t18n="text:support" className="text-color-600" preset="body-text-14-light" />
-        </div>
-      </div>
-    </div>
-  );
+    // Check if the Zalo SDK script is already injected, if not, inject it
+    if (!document.querySelector('script[src="https://sp.zalo.me/plugins/sdk.js"]')) {
+      loadZaloSDK();
+    }
+
+    // Create the Zalo chat widget div and set its attributes
+    const zaloChatWidgetDiv = document.createElement('div');
+    zaloChatWidgetDiv.className = 'zalo-chat-widget';
+    zaloChatWidgetDiv.setAttribute('data-oaid', '1737568307835058842');
+    zaloChatWidgetDiv.setAttribute(
+      'data-welcome-message',
+      'Môi trường xanh Tân Phú, rất vui khi được hỗ trợ bạn!'
+    );
+    zaloChatWidgetDiv.setAttribute('data-autopopup', '0');
+    zaloChatWidgetDiv.setAttribute('data-width', '');
+    zaloChatWidgetDiv.setAttribute('data-height', '');
+
+    // Append the Zalo chat widget div to the body
+    document.body.appendChild(zaloChatWidgetDiv);
+
+    return () => {
+      // Cleanup function to remove the Zalo chat widget div and script when the component is unmounted
+      document.body.removeChild(zaloChatWidgetDiv);
+      // const zaloScript = document.querySelector('script[src="https://sp.zalo.me/plugins/sdk.js"]');
+      // if (zaloScript) {
+      //   document.body.removeChild(zaloScript);
+      // }
+    };
+  }, []);
+
+  return null;
 };
 
-export const CustomerSupport = memo(Component, isEqual);
+export default ZaloChatWidget;

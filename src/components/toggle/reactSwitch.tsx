@@ -1,9 +1,29 @@
 import PropTypes from 'prop-types';
+import type { ReactNode } from 'react';
 import { Component } from 'react';
 
 import getBackgroundColor from './getBackgroundColor';
 import hexColorPropType from './hexColorPropType';
 
+interface ReactSwitchProps {
+  checked: boolean;
+  disabled?: boolean;
+  className?: string;
+  offColor?: string;
+  onColor?: string;
+  offHandleColor?: string;
+  onHandleColor?: string;
+  checkedIcon?: ReactNode;
+  uncheckedIcon?: ReactNode;
+  checkedHandleIcon?: ReactNode;
+  uncheckedHandleIcon?: ReactNode;
+  boxShadow?: string;
+  activeBoxShadow?: string;
+  height?: number;
+  width?: number;
+  borderRadius?: number;
+  handleDiameter?: number;
+}
 class ReactSwitch extends Component {
   constructor(props) {
     super(props);
@@ -206,7 +226,7 @@ class ReactSwitch extends Component {
       borderRadius,
       handleDiameter, // just to filter this prop out
       ...rest
-    } = this.props;
+    } = this.props as ReactSwitchProps;
 
     const { $pos, $isDragging, $hasOutline } = this.state;
 

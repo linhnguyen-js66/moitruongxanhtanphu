@@ -1,10 +1,9 @@
-import { Button } from 'antd';
 import { memo, useEffect, useMemo, useState } from 'react';
 import isEqual from 'react-fast-compare';
 import { Slide } from 'react-slideshow-image';
 
 import type { IconSvgTypes } from '@/assets/svg';
-import { IconSvgLocal, TextBase } from '@/components';
+import { ButtonBase, IconSvgLocal, TextBase } from '@/components';
 import useScreenResize from '@/hooks/useScreenResize';
 
 const Component = () => {
@@ -44,13 +43,13 @@ const Component = () => {
     <div className="mb-32 h-full">
       <div className="mx-32 flex items-center mobile:flex-col mobile:items-start">
         <div className="flex items-center">
-          <Button
-            className="background-btn-about h-44 rounded-radius-xxxl border-weight-l border-common-0 px-36"
+          <ButtonBase
+            classNames="px-36 h-44 rounded-radius-xxxl hover:shadow-down-s hover:shadow-color-300 body-text-16-regular"
             name="btnProject"
             onClick={() => {}}
-          >
-            <TextBase t18n="text:partner" preset="body-text-16-regular" className="text-common-0" />
-          </Button>
+            t18n="text:partner"
+            type="ghost"
+          />
           <div className="ml-16 flex size-36 items-center justify-center rounded-[100%] bg-primary-800">
             <IconSvgLocal
               name="IC_ARROW_RIGHT_OUTLINE"

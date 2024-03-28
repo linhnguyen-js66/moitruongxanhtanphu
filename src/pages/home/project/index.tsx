@@ -1,21 +1,39 @@
 import 'react-slideshow-image/dist/styles.css';
 
-import { Button } from 'antd';
+import { Button, Form, Input, Modal, Select } from 'antd';
+import parsePhoneNumberFromString from 'libphonenumber-js';
 import Image from 'next/image';
-import { memo, useCallback, useEffect, useState } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 import isEqual from 'react-fast-compare';
 import { useTranslation } from 'react-i18next';
 import { Slide } from 'react-slideshow-image';
 
-import { IconSvgLocal, TextBase } from '@/components';
+import { ButtonBase, IconSvgLocal, TextBase } from '@/components';
+import { TYPE_CONTENT, useProject } from '@/hooks/useProject';
 import useScreenResize from '@/hooks/useScreenResize';
 
+export type FieldType = {
+  address?: string;
+  phoneNumber?: string;
+  companyName?: string;
+  email?: string;
+};
 const Component = (props: any) => {
-  const { isActive } = props;
-  const [configShow, setConfigShow] = useState({
-    slidesToScroll: 3,
-    slidesToShow: 3,
-  });
+  const {
+    isActive,
+    isModalOpen,
+    handleCancel,
+    configShow,
+    content,
+    onSelectContent,
+    setConfigShow,
+    countryList,
+    selectNation,
+    onUpload,
+    handleNation,
+    loading,
+    form,
+  } = useProject(props);
   const typeDevice = useScreenResize();
 
   useEffect(() => {
@@ -26,6 +44,7 @@ const Component = (props: any) => {
       });
     }
   }, [typeDevice]);
+  const { t } = useTranslation();
   const indicators = (index: any) => <div className="indicator_side" key={index} />;
   const renderHeader = useCallback(() => {
     return (
@@ -50,49 +69,40 @@ const Component = (props: any) => {
           </div>
 
           <div className="mt-32 flex flex-1">
-            <Button
-              className="background-btn-about h-46 rounded-radius-xxxl bg-primary-100 px-36"
-              name="about"
+            <ButtonBase
+              classNames="px-36 h-44 rounded-radius-xxxl hover:shadow-down-s hover:shadow-color-300 body-text-16-regular bg-primary-100 hover:text-color-900"
+              name="btnProject"
               onClick={() => {}}
-            >
-              <TextBase
-                t18n="text:about_comp"
-                preset="body-text-16-regular"
-                className="text-common-0"
-              />
-            </Button>
-            <Button
-              className="background-btn-project ml-12 flex h-46 items-center justify-center border-weight-none"
-              name="project"
+              t18n="text:about_comp"
+              type="secondary"
+            />
+
+            <ButtonBase
+              classNames="ml-12 flex h-46 items-center justify-center border-weight-none body-text-16-regular bg-color-transparent hover:bg-color-transparent"
+              name="btnProject"
               onClick={() => {}}
-              type="text"
-            >
-              <TextBase
-                t18n="text:project_highlight"
-                preset="body-text-16-regular"
-                className="mr-4"
-              />
-              <IconSvgLocal name="IC_ARROW_RIGHT" height={16} />
-            </Button>
+              t18n="text:project_highlight"
+              rightIcon="IC_ARROW_RIGHT"
+            />
           </div>
         </div>
         {/* </div> */}
       </div>
     );
   }, [isActive]);
-  const { t } = useTranslation();
+
   const renderBody = useCallback(() => {
     return (
       <div className="my-48 mobile:flex mobile:w-full mobile:justify-between">
-        <Button
-          className={`background-btn-about ${isActive ? 'item-animation' : ''} h-36 rounded-radius-xxxl border-weight-l border-common-0 px-36`}
+        <ButtonBase
+          classNames="px-36 h-44 rounded-radius-xxxl hover:shadow-down-s hover:shadow-color-300 body-text-16-regular"
           name="btnProject"
           onClick={() => {}}
-        >
-          <TextBase t18n="text:project" preset="body-text-16-regular" className="text-common-0" />
-        </Button>
+          t18n="text:project"
+          type="ghost"
+        />
         <div
-          className={`${isActive ? 'item-animation' : ''} mt-24 w-[55%] mobile:ml-16 mobile:mt-0 mobile:w-full`}
+          className={`${isActive ? 'item-animation' : ''} mt-24 w-[55%] mobile:ml-16 mobile:mt-0 mobile:w-[70%]`}
         >
           <TextBase
             preset="body-text-48-light"
@@ -106,21 +116,24 @@ const Component = (props: any) => {
       </div>
     );
   }, [t, isActive]);
+
   const buttonViewMore = useCallback(
     (link: string) => (
-      <Button
-        className="background-btn-project flex items-center border-weight-none p-0"
+      <ButtonBase
+        classNames="bg-color-transparent flex items-center border-weight-none p-0 hover:bg-color-transparent hover:text-color-900"
         name="project"
-        onClick={() => {}}
-        type="text"
-      >
-        <TextBase t18n="Xem thêm" preset="body-text-16-regular" className="mr-8" />
-        <div className="flex size-32 items-center justify-center rounded-[100%] bg-common-1000">
-          <IconSvgLocal name="IC_ARROW_DOWN" classNames="-rotate-90" height={16} />
-        </div>
-      </Button>
+        onClick={() => onSelectContent(link)}
+        customContent={
+          <div className="flex items-center">
+            <TextBase t18n="text:view_more" preset="body-text-16-regular" className="mr-8" />
+            <div className="flex size-32 items-center justify-center rounded-[100%] bg-common-1000">
+              <IconSvgLocal name="IC_ARROW_DOWN" classNames="-rotate-90" height={16} />
+            </div>
+          </div>
+        }
+      />
     ),
-    []
+    [onSelectContent]
   );
   const renderFooter = useCallback(() => {
     return (
@@ -135,55 +148,55 @@ const Component = (props: any) => {
         canSwipe
         cssClass={`${isActive ? 'fly' : ''}`}
       >
-        <div className=" pr-12 mobile:pr-0">
+        {/** 1 */}
+        <div className="pr-12 mobile:pr-0">
           <div className="flex w-full flex-col rounded-radius-xxxl bg-color-100 p-24">
             <div className="flex justify-center">
               <div className="mr-16 flex flex-col justify-between">
                 <div>
                   <div className="w-[60%] mobile:w-full">
-                    <TextBase t18n="Xử lý, tái chế chất thải" preset="body-text-24-light" />
+                    <TextBase t18n="text:waste_management" preset="body-text-24-light" />
                   </div>
                   <div className="mt-12">
-                    <TextBase
-                      preset="body-text-16-light"
-                      t18n="Đơn vị tiên phong xử lý pin năng lượng mặt trời, có khả năng thu hồi và tái chế kim loại màu tại Việt Nam"
-                    />
+                    <TextBase preset="body-text-16-light" t18n="text:note_waste_management" />
                   </div>
                 </div>
-                <div className="mt-16">{buttonViewMore('')}</div>
+                <div className="mt-16">{buttonViewMore(TYPE_CONTENT.XU_LY_TC)}</div>
               </div>
               <div className="img-custom rounded-radius-xxl">
                 <Image
                   fill
                   className="img-inner object-scale-down"
                   src="https://images.unsplash.com/photo-1708356476484-ac4797f0dac8?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  alt="Your Image"
+                  alt="Công ty môi trường xanh Tân Phú dịch vụ tiêu huỷ hàng hoá tư vấn môi trường kinh doanh nhập khẩu phế liệu"
                 />
               </div>
             </div>
           </div>
         </div>
+        {/** 2 */}
         <div className="size-full pr-12 mobile:pr-0">
           <div className="relative flex size-full flex-col justify-between overflow-hidden rounded-radius-xxxl bg-primary-100 p-24 mobile:w-full">
-            <div>
-              <div className="absolute px-16 py-4">
-                <TextBase t18n="Tư vấn" preset="body-text-24-light" />
-                <TextBase t18n="môi trường" preset="body-text-24-light" />
+            <div className="relative overflow-hidden">
+              <div className="absolute flex h-full flex-col justify-center px-16 py-4">
+                <TextBase t18n="text:support_env" preset="body-text-24-light" />
+                <TextBase t18n="text:support_env_v2" preset="body-text-24-light" />
               </div>
-              <IconSvgLocal name="IC_FRAME_WHITE" height={80} />
+              <IconSvgLocal name="IC_FRAME_WHITE" height={90} />
             </div>
-            <div className="z-50">{buttonViewMore('')}</div>
+            <div className="z-50">{buttonViewMore(TYPE_CONTENT.TUVAN)}</div>
             <div className="absolute -bottom-32 -left-32 rounded-radius-5xl">
               <IconSvgLocal name="IC_CIRCLE" height={200} classNames="" />
             </div>
           </div>
         </div>
+        {/** 3 */}
         <div className="size-full pr-12 mobile:pr-0">
           <div className="relative flex size-full flex-col justify-between overflow-hidden rounded-radius-xxxl bg-primary-100 p-24 mobile:w-full">
             <div className="w-3/5 rounded-radius-xxl bg-common-1000 p-16">
-              <TextBase t18n="Kinh doanh nhập khẩu phế liệu" preset="body-text-24-light" />
+              <TextBase t18n="text:sale_env" preset="body-text-24-light" />
             </div>
-            <div className="z-50">{buttonViewMore('')}</div>
+            <div className="z-50">{buttonViewMore(TYPE_CONTENT.KINHDOANH)}</div>
             <div className="absolute -bottom-32 -left-32 rounded-radius-5xl">
               <IconSvgLocal name="IC_CIRCLE" height={200} classNames="" />
             </div>
@@ -192,11 +205,151 @@ const Component = (props: any) => {
       </Slide>
     );
   }, [buttonViewMore, configShow.slidesToScroll, configShow.slidesToShow, isActive]);
+  const prefixSelector = (
+    <Form.Item name="countryCode" noStyle>
+      <Select
+        defaultValue={selectNation}
+        onChange={handleNation}
+        style={{ width: 90 }}
+        placeholder={t('text:pld_enter_phone')}
+        optionFilterProp="children"
+      >
+        {countryList?.map((item, index) => (
+          <Option key={index} value={item?.value}>
+            <div className="flex flex-1 items-center justify-between">
+              <TextBase preset="body-text-14-semibold">{item?.label}</TextBase>
+              {item?.icon && <Image alt="quocgiaphone" height={16} width={16} src={item?.icon} />}
+            </div>
+          </Option>
+        ))}
+      </Select>
+    </Form.Item>
+  );
   return (
     <div className="mt-[64px] px-32">
       {renderHeader()}
       {renderBody()}
       {renderFooter()}
+      <Modal
+        // title={content?.title}
+        open={isModalOpen}
+        centered
+        onCancel={handleCancel}
+        width={600}
+        footer={[]}
+      >
+        <div className="flex flex-col items-center">
+          <TextBase preset="body-text-24-semibold">{content?.title}</TextBase>
+          <div className="h-16" />
+          <div className="body-text-16-light">{content?.content}</div>
+
+          <div className="body-text-16-light mt-16 w-full">{content?.content2}</div>
+          <div className="body-text-16-light mt-16 w-full">{content?.content3}</div>
+          {content?.img && (
+            <div className="mt-32">
+              <Image
+                height={300}
+                src={content?.img}
+                className="rounded-radius-l"
+                alt="Xử lý tái chế rác thải tư vấn môi trường tiêu huỷ hàng hoá nhập khẩu phế liệu Môi trường xanh Tân Phú"
+                loading="lazy"
+                placeholder="blur"
+                sizes="100vw"
+              />
+            </div>
+          )}
+          {content?.form && (
+            <div className="mt-16 w-full">
+              <Form
+                form={form}
+                initialValues={{
+                  address: '',
+                  phoneNumber: '',
+                  companyName: '',
+                  email: '',
+                }}
+                name="basic"
+                style={{ maxWidth: 600 }}
+                initialValues={{ remember: true, countryCode: countryList?.[0]?.value }}
+                onFinish={onUpload}
+                onFinishFailed={() => {}}
+                autoComplete="off"
+              >
+                <Form.Item
+                  label={t('text:your_company')}
+                  name="companyName"
+                  rules={[{ required: true, message: t('validate:not_empty') }]}
+                >
+                  <Input placeholder={t('text:your_company')} />
+                </Form.Item>
+                <Form.Item
+                  label={t('text:address_comp')}
+                  name="address"
+                  rules={[{ required: true, message: t('validate:not_empty') }]}
+                >
+                  <Input placeholder={t('text:address_comp')} />
+                </Form.Item>
+                <Form.Item
+                  label={t('text:email_comp')}
+                  name="email"
+                  rules={[
+                    { required: true, message: t('validate:not_empty') },
+                    { type: 'email', message: t('validate:error_email') },
+                  ]}
+                >
+                  <Input placeholder={t('text:email_comp')} />
+                </Form.Item>
+                <Form.Item
+                  label={t('text:phone_number')}
+                  name="phoneNumber"
+                  dependencies={['countryCode']}
+                  rules={[
+                    ({ getFieldValue }) => ({
+                      validator(_, value) {
+                        const code = getFieldValue('countryCode');
+                        const fullNumber = `${code}${value}`;
+
+                        const phoneNumber = parsePhoneNumberFromString(fullNumber);
+                        if (!value) {
+                          return Promise.reject(new Error(t('validate:not_empty')));
+                        }
+                        if (!phoneNumber || !phoneNumber.isValid() || isNaN(value)) {
+                          return Promise.reject(new Error(t('validate:error_phone')));
+                        }
+
+                        return Promise.resolve();
+                      },
+                    }),
+                  ]}
+                >
+                  {/* <Input.Group compact> */}
+                  {/*  */}
+                  <Input
+                    type="tel"
+                    addonBefore={prefixSelector}
+                    placeholder={t('text:pld_enter_phone')}
+                    className="grow"
+                  />
+                  {/* </Input.Group> */}
+                </Form.Item>
+
+                <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+                  <Button
+                    loading={loading}
+                    disabled={loading}
+                    name="close_btn"
+                    style={{ backgroundColor: 'rgb(var(--primary-200))', height: 44, width: '80%' }}
+                    htmlType="submit"
+                    className="background-btn"
+                  >
+                    {t('text:suggest_price')}
+                  </Button>
+                </Form.Item>
+              </Form>
+            </div>
+          )}
+        </div>
+      </Modal>
     </div>
   );
 };

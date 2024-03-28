@@ -93,8 +93,9 @@
 .background-btn-project:hover{
   background: transparent !important;
 }
-.background-btn-about:hover{
-  border: 1px solid transparent!important;
+.background-btn:hover{
+  border: none!important;
+  color: 'rgb(var(--color-900)'!important;
 }
 
 
@@ -104,3 +105,9 @@
   border-bottom: transparent;
   width: 100%;
 }
+
+// .bg-frame-vision{
+//  background-image: url('../../assets/svg/ic-frame-home.svg');
+//  background-repeat: no-repeat;
+//  background-size: auto 100%;
+// }

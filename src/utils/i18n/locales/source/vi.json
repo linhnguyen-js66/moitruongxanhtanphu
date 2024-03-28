@@ -48,10 +48,38 @@
     "tanphu": "Công ty Môi trường xanh Tân Phú",
     "hello": "Xin chào!",
     "support": "Bạn cần được hỗ trợ",
-    "enter_message": "Aa..."
+    "enter_message": "Aa...",
+    "idea_environment": "Sáng Kiến Môi Trường Xanh",
+    "idea_note": "Tại Công Ty Môi Trường Xanh Tân Phú, chúng tôi cam kết hành động vì một tương lai bền vững thông qua các dịch vụ hàng đầu trong xử lý rác thải và tái chế phế liệu. Với sự chuyên môn hoá trong lĩnh vực xử lý chất thải, công nghệ tái chế tiên tiến, và các biện pháp tiêu huỷ hàng hóa môi trường an toàn, chúng tôi tự hào là người tiên phong trong việc bảo vệ môi trường và giảm thiểu ô nhiễm.",
+    "partner_note": "Đối Tác Đáng Tin Cậy Về Môi Trường",
+    "partner_des": "Với mục tiêu trở thành đối tác đáng tin cậy trong lĩnh vực môi trường, Công Ty Môi Trường Xanh Tân Phú không ngừng nâng cao chất lượng dịch vụ và áp dụng các giải pháp nhập khẩu phế liệu bền vững. Chúng tôi cung cấp các giải pháp môi trường toàn diện, từ tư vấn môi trường, quản lý chất thải đến tái chế, hướng tới mục tiêu phát triển bền vững và giảm thiểu tác động tiêu cực lên hành tinh của chúng ta.",
+    "vision_view": "Với sứ mệnh mang lại một tương lai xanh cho thế hệ tiếp theo, Công Ty Môi Trường Xanh Tân Phú tập trung vào việc áp dụng công nghệ tái chế tiên tiến và tư vấn môi trường chuyên nghiệp.",
+    "member_comp": "Công nghệ tiên tiến hàng đầu, đội ngũ nhiệt huyết chuyên môn cao",
+    "loading": "Chờ trong giây lát...",
+    "waste_management": "Xử lý, tái chế chất thải",
+    "note_waste_management": "Đơn vị tiên phong xử lý pin năng lượng mặt trời, có khả năng thu hồi và tái chế kim loại màu tại Việt Nam . dịch sang tiếng anh thật chuyên nghiệp và theo thuật ngữ môi trường",
+    "support_env": "Tư vấn",
+    "support_env_v2": "môi trường",
+    "sale_env": "Kinh doanh nhập khẩu phế liệu",
+    "view_more": "Xem thêm",
+    "close": "Đóng",
+    "content_waste": "Trong bước tiến quan trọng của giai đoạn 1, chúng tôi tự hào thông báo đã hoàn thành và đạt được 14/23 hạng mục công nghệ xử lý và tái chế chất thải môi trường, với sự chấp thuận và cấp phép từ Bộ Tài nguyên và Môi trường. Là đơn vị tiên phong trong lĩnh vực này, chúng tôi được trao quyền xử lý các tấm pin năng lượng mặt trời - một bước tiến đáng kể hướng tới tương lai tái chế bền vững. Chúng tôi cũng vinh dự là đơn vị đầu tiên tại Việt Nam có khả năng thu hồi, xử lý và tái chế kim loại màu, với dự án được dự kiến đầu tư vào năm 2024.",
+    "content_waste_v2": "Để phục vụ mục tiêu tái chế và xử lý chất thải, chúng tôi đã đầu tư vào hơn 10 công nghệ tân tiến, bao gồm: lò đốt chất thải với công suất 5 tấn/giờ, hệ thống xử lý thu hồi dầu từ chất thải nhựa có công suất 0.83 tấn/giờ, cùng với hệ thống xử lý nước thải tiên tiến, hệ thống xử lý bình ắc quy và linh kiện điện tử với công suất 1,25 tấn/giờ. Những công nghệ này không chỉ nâng cao hiệu suất tái chế mà còn đảm bảo môi trường sống xanh, sạch, đẹp cho thế hệ hiện tại và tương lai.",
+    "content_support": "Trong bối cảnh quản lý chất thải trở nên ngày càng quan trọng đối với doanh nghiệp, dịch vụ tư vấn môi trường của chúng tôi cung cấp hỗ trợ pháp lý chuyên sâu về quản lý chất thải. Từ hỗ trợ pháp lý trong quản lý chất thải cho doanh nghiệp đến tư vấn pháp lý cho các dịch vụ giám sát và lấy mẫu, chúng tôi đảm bảo rằng doanh nghiệp của bạn không chỉ tuân thủ mọi quy định môi trường mà còn tiên phong trong việc bảo vệ môi trường. Hãy để chúng tôi giúp doanh nghiệp bạn nâng cao hiệu quả quản lý chất thải, qua đó giảm thiểu rủi ro pháp lý và tăng cường uy tín môi trường.",
+    "legal_1": "Hỗ trợ pháp lý doanh nghiệp trong công tác quản lý chất thải",
+    "legal_2": "Hỗ trợ quản lý về dịch vụ, quan trắc, đo đạc, lấy mẫu quan trắc",
+    "pld_enter_phone": "Nhập số điện thoại",
+    "suggest_price": "Báo giá",
+    "phone_number": "Số điện thoại",
+    "your_company": "Tên doanh nghiệp/công ty",
+    "address_comp": "Địa chỉ",
+    "email_comp": "Email"
   },
   "alert": {},
   "validate": {
-    "message_error": "Vui lòng nhập câu trả lời..."
+    "message_error": "Vui lòng nhập câu trả lời...",
+    "error_email": "Địa chỉ email không hợp lệ",
+    "not_empty": "Không được bỏ trống",
+    "error_phone": "Số điện thoại không đúng định dạng"
   }
 }

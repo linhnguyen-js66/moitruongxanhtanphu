@@ -11,7 +11,7 @@ import { loadFromLocalStorage, saveToLocalStorage } from '@/utils/storage';
 
 import { FooterApp } from '../footer';
 import MenuCustom from '../menu';
-import { CustomerSupport } from './customer-chatting';
+import ZaloChatWidget from './customer-chatting';
 
 const { Content } = Layout;
 
@@ -21,7 +21,7 @@ export default function HomeLayout({ children }: LayoutProps) {
   const dispatch = useDispatch();
   const checkLanguageRecent = useCallback(() => {
     const data = loadFromLocalStorage('language');
-    const language = get(data, 'vi', false);
+    const language = get(data, 'vi', 'en');
     setIsVietnamese(language);
     dispatch(setLanguage(language));
     changeLanguage(language ? 'vi' : 'en');
@@ -48,8 +48,8 @@ export default function HomeLayout({ children }: LayoutProps) {
   const selectLanguage = useCallback(() => {
     return (
       <Button
-        type="default"
-        className={`gradient-button ${isVietnamese ? 'active' : ''} mr-16 flex aspect-square size-[60px] items-center justify-center rounded-[100%] shadow-down-m shadow-color-500`}
+        type="text"
+        className="flex items-center justify-center shadow-down-m shadow-color-500"
         onClick={onChangeLanguage}
       >
         <IconSvgLocal name={isVietnamese ? 'IC_VIETNAM' : 'IC_ENGLISH'} />
@@ -66,14 +66,14 @@ export default function HomeLayout({ children }: LayoutProps) {
           </Content>
         </div>
       </div>
-      <div className="bound-animation fixed bottom-32 right-32 z-50 flex items-center p-16 transition duration-150 ease-in-out">
+      <div className="fixed bottom-[120px] right-[52px] z-50 flex flex-col items-center p-16">
         {selectLanguage()}
-        <CustomerSupport />
       </div>
+
+      {/* */}
+
       <FooterApp />
+      <ZaloChatWidget />
     </div>
   );
-}
-function dispatch(arg0: any) {
-  throw new Error('Function not implemented.');
 }

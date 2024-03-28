@@ -18,6 +18,7 @@ import IC_ENGLISH from './ic-english.svg';
 import IC_FACEBOOK from './ic-facebook.svg';
 import IC_FEEDBACK from './ic-feedback.svg';
 import IC_FOOTER from './ic-footer.svg';
+import IC_FRAME_HOME from './ic-frame-home.svg';
 import IC_HOME_LEFT from './ic-home-left.svg';
 import IC_HOME_RIGHT from './ic-home-right.svg';
 import IC_HOME from './ic-home.svg';
@@ -100,5 +101,6 @@ export const IconSvgs = {
   IC_PARTNER_3,
   IC_PARTNER_4,
   IC_LOGO_DARK,
+  IC_FRAME_HOME,
 };
 export type IconSvgTypes = keyof typeof IconSvgs;

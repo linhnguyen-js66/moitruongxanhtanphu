@@ -5,11 +5,13 @@ import type { IconSvgTypes } from '@/assets/svg';
 import { IconSvgLocal } from '@/components/icon-vec-local';
 import type { I18nKeys } from '@/utils/i18n/locales';
 
+import { showDialog } from '../dialog';
+
 interface idPropButton extends React.HTMLAttributes<HTMLDivElement> {
   type?: 'primary' | 'secondary' | 'ghost' | 'whiteGhost';
   htmlType?: HTMLButtonElement['type'];
   disabled?: boolean;
-  onClick?: () => void;
+  onClick?: (event: any) => void;
   styles?: React.CSSProperties; // css inline để đè lên css mặc định
   classNames?: React.ComponentProps<'div'>['className']; // có thể bổ sung class ngoài
   t18n?: I18nKeys;
@@ -24,6 +26,7 @@ interface idPropButton extends React.HTMLAttributes<HTMLDivElement> {
   onlyWrap?: boolean;
   children?: React.ReactNode;
   name: string; // ten su kien
+  noCheckOnClick?: boolean; // không hiển thị thông báo tính năng đang phát triển
 }
 
 const ButtonBase = (props: idPropButton) => {
@@ -32,7 +35,7 @@ const ButtonBase = (props: idPropButton) => {
     type = 'secondary',
     htmlType = 'button',
     disabled = false,
-    onClick = () => {},
+    onClick = undefined,
     styles = {},
     classNames = '',
     size = 44,
@@ -46,6 +49,7 @@ const ButtonBase = (props: idPropButton) => {
     customContent,
     onlyWrap = false,
     children,
+    noCheckOnClick = false,
     ...reftProps
   } = props;
   const [t] = useTranslation();
@@ -63,17 +67,38 @@ const ButtonBase = (props: idPropButton) => {
 
   if (onlyWrap) {
     return (
-      <div {...reftProps} onClick={onClick} className={`cursor-pointer ${reftProps.className}`}>
+      <div
+        {...reftProps}
+        onClick={handleClickButton}
+        className={`cursor-pointer ${reftProps.className}`}
+      >
         {children || customContent}
       </div>
     );
+  }
+
+  function handleClickButton(e: any) {
+    if (disabled) return;
+    if (!onClick && !noCheckOnClick) {
+      showDialog({
+        title: t('text:notification'),
+        content: t('text:functions_in_development'),
+        actions: [
+          {
+            title: t('text:close'),
+          },
+        ],
+      });
+      return;
+    }
+    onClick && onClick(e);
   }
 
   return (
     <button
       // @ts-ignore
       type={htmlType}
-      onClick={() => onClick()}
+      onClick={handleClickButton}
       style={{ height: size, fontSize, ...styles }}
       disabled={disabled}
       className={`btn_base btn_${type} ${classNames}`}
@@ -88,12 +113,7 @@ const ButtonBase = (props: idPropButton) => {
       {content}
       {rightIcon && (
         <div style={{ marginLeft: content ? 8 : 0 }}>
-          <IconSvgLocal
-            name={rightIcon}
-            height={heightIcon}
-            width={widthIcon}
-            fill={disabled ? 'rgb(var(--color-600)' : ''}
-          />
+          <IconSvgLocal name={rightIcon} height={heightIcon} width={widthIcon} />
         </div>
       )}
     </button>
