@@ -1,14 +1,19 @@
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from 'firebaseConfig';
 import Image from 'next/image';
-import { memo, useCallback, useMemo } from 'react';
+import { memo, useCallback, useEffect, useMemo, useState } from 'react';
 import isEqual from 'react-fast-compare';
+import { useSelector } from 'react-redux';
 
 import { IconSvgLocal, TextBase } from '@/components';
 import useScreenResize from '@/hooks/useScreenResize';
 import { useWindowDimensions } from '@/hooks/useWindowDimension';
+import { selectLanguage } from '@/stores/globalSlice';
 
 const Component = () => {
   const Dimensions = useWindowDimensions();
   const square = useMemo(() => (Dimensions.width - 13 * 8) / 3, [Dimensions.width]);
+  const [feedback, setFeedBack] = useState([]);
   const widthImg = useMemo(() => (Dimensions.width - 24 * 5) / 4, [Dimensions.width]);
   const typeDevice = useScreenResize();
   const paddingImg = useMemo(() => {
@@ -54,34 +59,42 @@ const Component = () => {
       </div>
     );
   }, [paddingImg, square]);
-  const dataComment = useMemo(() => {
-    return [
-      {
-        name: 'Nguyen Van Minh - Giám Đốc Công ty A',
-        title:
-          'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo conUt enim ad minim',
-        ava: 'https://media.istockphoto.com/id/1413766112/vi/anh/doanh-nh%C3%A2n-tr%C6%B0%E1%BB%9Fng-th%C3%A0nh-th%C3%A0nh-c%C3%B4ng-nh%C3%ACn-v%C3%A0o-m%C3%A1y-%E1%BA%A3nh-v%E1%BB%9Bi-s%E1%BB%B1-t%E1%BB%B1-tin.jpg?s=612x612&w=0&k=20&c=fkD6hoCvgM3sZXXhjgkJHzY-Lz3EUcNcbIOl_zoblcM=',
-      },
-      {
-        name: 'Angel Phuong Trinh - Giám Đốc Công ty B',
-        title:
-          'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo conUt enim ad minim Ut enim ad minim veniam, quis nostrud exercitation. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo conUt enim ad minim',
-        ava: 'https://img.freepik.com/free-photo/portrait-smiling-successful-businesswoman-looking-into-camera-sitting-restaurant-business-lady-with-stylish-hairstyle-wears-elegant-suit-business-meeting-attractive-appearance_8353-12611.jpg',
-      },
-    ];
-  }, []);
+  const language = useSelector(selectLanguage);
+
+  const getFeedback = useCallback(async () => {
+    const querySnapshot = await getDocs(collection(db, 'feedback'));
+    const list = querySnapshot.docs.map((doc) => ({
+      documentID: doc.id,
+      ...doc.data(),
+      feedback: language == 'vi' ? doc?.data().content?.vi : doc?.data().content?.en,
+    }));
+    setFeedBack(list);
+  }, [language]);
+  useEffect(() => {
+    getFeedback();
+  }, [getFeedback]);
   const RenderComment = useCallback(() => {
-    return dataComment.map((item, index) => (
+    return feedback?.map((item, index) => (
       <div
         key={index}
-        className={`${index != 1 ? 'bg-color-100' : 'bg-primary-200'} p-24 ${dataComment?.length - 1 == index ? 'mb-0' : 'mb-16'} flex items-start rounded-radius-xxl`}
+        className={`${index != 1 ? 'bg-color-100' : 'bg-primary-200'} p-24 ${feedback?.length - 1 == index ? 'mb-0' : 'mb-16'} flex items-start rounded-radius-xxl`}
       >
-        <div className="img-custom aspect-square size-[64px] shrink-0 overflow-hidden rounded-[100%]">
-          <Image fill className="img-inner object-scale-down" src={item?.ava} alt="Your Image" />
+        <div className="img-custom flex aspect-square size-[64px] shrink-0 items-center justify-center overflow-hidden rounded-[100%] bg-color-50">
+          <Image
+            className="object-contain"
+            src={item?.ava}
+            alt="Your Image"
+            width={64}
+            height={64}
+            loading="lazy"
+            // placeholder="blur"
+            sizes="100vw"
+          />
         </div>
         <div className="ml-16 grow">
           <TextBase preset="body-text-18-medium" presetMobile="body-text-16-medium">
-            {item?.name}
+            {item?.name} - {item?.position}{' '}
+            <span className="body-text-16-light italic">({item?.company})</span>
           </TextBase>
           <div className="mt-12">
             <TextBase
@@ -89,13 +102,13 @@ const Component = () => {
               presetMobile="body-text-16-light"
               className="text-color-500 mobile:line-clamp-3"
             >
-              “{item?.title}”
+              “{item?.feedback}”
             </TextBase>
           </div>
         </div>
       </div>
     ));
-  }, []);
+  }, [feedback]);
   const RenderFooter = useCallback(() => {
     return [1, 2, 3, 4].map((el, index) => (
       <div key={el} className="ml-24">
@@ -109,7 +122,7 @@ const Component = () => {
       <div className="mt-48 flex items-start justify-between mobile:mt-24 mobile:flex-col ">
         <div className="flex items-end mobile:mb-8">
           <TextBase
-            t18n="Phản hồi"
+            t18n="text:feedback"
             preset="body-text-32-light"
             presetTable="body-text-24-light"
             presetMobile="body-text-16-light"
@@ -120,7 +133,7 @@ const Component = () => {
           <TextBase
             preset="body-text-24-regular"
             presetMobile="body-text-16-regular"
-            t18n="Danh mục phản hồi khách hàng, nền tảng cải thiện sản phẩm và dịch vụ"
+            t18n="text:feedback_note"
             className="text-color-500"
           />
         </div>

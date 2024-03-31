@@ -2,6 +2,7 @@ import { Card } from 'antd';
 import Image from 'next/image';
 import { memo, useCallback, useEffect, useMemo, useState } from 'react';
 import isEqual from 'react-fast-compare';
+import { useTranslation } from 'react-i18next';
 import { Slide } from 'react-slideshow-image';
 
 import boss1 from '@/assets/image/boss-1.png';
@@ -9,32 +10,29 @@ import boss2 from '@/assets/image/boss-2.png';
 import boss3 from '@/assets/image/boss-3.png';
 import { IconSvgLocal, TextBase } from '@/components';
 import useScreenResize from '@/hooks/useScreenResize';
-// const boss1 = '.../assets/image/boss-1.png';
-// const boss2 = '.../assets/image/boss-2.png';
-// const boss3 = '.../assets/image/boss-3.png';
-const Component = () => {
+
+const Component = (props) => {
+  console.log(props, 'fff');
+  const { t } = useTranslation();
   const data = useMemo(() => {
     return [
       {
         ava: boss1,
-        name: 'Mr.Linh Nguyễn',
-        title:
-          'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beata',
+        name: t('text:boss1'),
+        title: t('text:boss1_note'),
       },
       {
         ava: boss2,
-        name: 'Mrs.Oanh Trần',
-        title:
-          'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beata',
+        name: t('text:boss2'),
+        title: t('text:boss2_note'),
       },
       {
         ava: boss3,
-        name: 'Mr.Peter Nguyễn',
-        title:
-          'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beata',
+        name: t('text:boss3'),
+        title: t('text:boss3_note'),
       },
     ];
-  }, []);
+  }, [t]);
   const [configShow, setConfigShow] = useState({
     slidesToScroll: 3,
     slidesToShow: 3,
@@ -79,7 +77,9 @@ const Component = () => {
           >
             <div className="rounded-radius-xxxl">
               <div className="flex items-center justify-between">
-                <TextBase preset="body-text-16-semibold">{item?.name}</TextBase>
+                <div className="mr-16 flex flex-1">
+                  <TextBase preset="body-text-16-semibold">{item?.name}</TextBase>
+                </div>
                 <div className="flex size-40 items-center justify-center rounded-[100%] bg-primary-50">
                   <div className="flex size-32 items-center justify-center rounded-[100%] bg-primary-300">
                     <IconSvgLocal name="IC_LOGO_DARK" height={18} width={18} />
@@ -96,9 +96,9 @@ const Component = () => {
     );
   }, [configShow.slidesToScroll, configShow.slidesToShow, data, indicators]);
   return (
-    <div className="my-[64px] px-[64px] mobile:px-16">
+    <div className="fly my-[64px] px-[64px] mobile:px-16">
       <TextBase preset="body-text-24-bold" presetMobile="body-text-18-bold">
-        ĐỘI NGŨ CÔNG TY
+        {t('text:member')}
       </TextBase>
       <div className="w-1/2 mobile:w-full">
         <TextBase
@@ -106,9 +106,7 @@ const Component = () => {
           preset="body-text-18-light"
           presetMobile="body-text-16-light"
         >
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-          laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi
-          architecto beata
+          {t('text:member_intro')}
         </TextBase>
       </div>
       <div className="mt-48">{RenderList()}</div>

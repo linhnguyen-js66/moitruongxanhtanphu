@@ -85,6 +85,14 @@ const Component = () => {
             <IconSvgLocal name="IC_SETTING" height={28} classNames="spin-animation" />
           </div>
         </div>
+        <div className="absolute bottom-32 mx-32 flex items-center justify-center rounded-radius-xxxl bg-color-50 p-24 text-center">
+          <TextBase
+            t18n="text:center_note"
+            preset="body-text-18-light"
+            presetMobile="body-text-12-light"
+            presetTable="body-text-12-light"
+          />
+        </div>
       </div>
       {/** Right */}
       <div className="grid grid-flow-row grid-cols-3 items-center justify-items-center gap-12 tablet:gap-4 mobile:gap-[2px]">

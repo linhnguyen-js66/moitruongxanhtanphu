@@ -5,11 +5,11 @@ import { t } from 'i18next';
 import { parsePhoneNumberFromString } from 'libphonenumber-js';
 import type { StaticImageData } from 'next/image';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { get } from 'react-hook-form';
+import { useSelector } from 'react-redux';
 
 import WASTE_FACTORY from '@/assets/image/waste_factory.avif';
 import { JSONFiles } from '@/assets/json';
-import { loadFromLocalStorage } from '@/utils/storage';
+import { selectLanguage } from '@/stores/globalSlice';
 
 import { useModal } from './useModal';
 
@@ -28,6 +28,7 @@ export const useProject = (props: any) => {
   const { flagCountry } = JSONFiles;
   const [selectNation, setSelectNation] = useState<any>({});
   const { isModalOpen, showModal, handleCancel } = useModal();
+  const [selectPurpose, setSelectPurpose] = useState({});
   // const { currentLanguage } = useAppLanguage();
   const [content, setContent] = useState({
     title: '',
@@ -35,10 +36,6 @@ export const useProject = (props: any) => {
     content2: '',
     img: '' as StaticImageData | string,
     form: false,
-  });
-  const [configShow, setConfigShow] = useState({
-    slidesToScroll: 3,
-    slidesToShow: 3,
   });
 
   const onSelectContent = useCallback(
@@ -66,7 +63,7 @@ export const useProject = (props: any) => {
         case TYPE_CONTENT.KINHDOANH:
           setContent({
             title: t('text:sale_env'),
-            content: '',
+            content: t('text:kinhdoanh'),
             type,
           });
           break;
@@ -83,7 +80,7 @@ export const useProject = (props: any) => {
   );
   const onUpload = useCallback(
     async (value: any) => {
-      const { address, companyName, countryCode, email, phoneNumber } = value;
+      const { address, companyName, countryCode, email, phoneNumber, content } = value;
       setLoading(true);
       await addDoc(collection(db, 'company_support'), {
         address,
@@ -91,6 +88,7 @@ export const useProject = (props: any) => {
         countryCode,
         email,
         phoneNumber,
+        content,
         nation: selectNation,
         createdAt: serverTimestamp(),
       })
@@ -106,7 +104,7 @@ export const useProject = (props: any) => {
           form.resetFields();
         });
     },
-    [selectNation]
+    [form, handleCancel, selectNation]
   );
 
   // {country.name} (+{country.dialCode})
@@ -120,6 +118,7 @@ export const useProject = (props: any) => {
           value: item?.dial_code,
           icon: findItem?.flag,
           id: item?.code,
+          ...findItem,
         });
       } else {
         data.push({
@@ -136,9 +135,14 @@ export const useProject = (props: any) => {
     setSelectNation(countryList?.[0]);
   }, [countryList]);
 
-  const handleNation = useCallback((value: any) => {
-    setSelectNation(value);
-  }, []);
+  const handleNation = useCallback(
+    (value: any) => {
+      const findItem = countryList.find((item: any) => item?.value == value);
+      setSelectNation(findItem);
+    },
+    [countryList]
+  );
+
   const handlePhoneNumber = useCallback(
     (value: string) => {
       const fullPhoneNumber = `+${selectNation?.value}${value}`;
@@ -151,37 +155,47 @@ export const useProject = (props: any) => {
     },
     [selectNation?.value]
   );
+  const language = useSelector(selectLanguage);
   const getListPurpose = useCallback(async () => {
-    const data = loadFromLocalStorage('language');
-
-    const language = get(data, 'vi', false);
     const querySnapshot = await getDocs(collection(db, 'purpose'));
     const purposesArray = querySnapshot.docs.map((doc) => ({
       documentID: doc.id,
       ...doc.data(),
-      value: language ? doc?.data().content?.vi : doc?.data().content?.en,
+      value: language == 'vi' ? doc?.data().content?.vi : doc?.data().content?.en,
     }));
     setPurpose(purposesArray);
-  }, []);
+  }, [language]);
   useEffect(() => {
     getListPurpose();
   }, [getListPurpose]);
-
+  const onHandlePurpose = useCallback(
+    (value: any) => {
+      const findItem = purpose?.find((item: any) => item?.value == value);
+      setSelectPurpose(findItem);
+    },
+    [purpose]
+  );
+  const onCancel = useCallback(() => {
+    handleCancel();
+    form.resetFields();
+  }, []);
   return {
     isActive,
     isModalOpen,
     showModal,
     handleCancel,
-    configShow,
     content,
     onSelectContent,
     onUpload,
-    setConfigShow,
     countryList,
     handleNation,
     selectNation,
     handlePhoneNumber,
     loading,
     form,
+    purpose,
+    onHandlePurpose,
+    selectPurpose,
+    onCancel,
   };
 };

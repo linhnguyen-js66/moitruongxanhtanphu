@@ -7,12 +7,17 @@ import IC_ARROW_RIGHT from './arrow-right.svg';
 import ICON_EYE_OPEN from './eye-open.svg';
 import ICON_EYE_SPLASH from './eye-splash.svg';
 import IC_FRAME_WHITE from './frame-white.svg';
+import IC_ACQUY from './ic-acquy.svg';
 import IC_ARROW_RIGHT_OUTLINE from './ic-arrow-right-outline.svg';
+import IC_AXIT from './ic-axit.svg';
 import IC_BG_HEADER from './ic-bg-header.svg';
+import IC_BUN from './ic-bun.svg';
 import IC_CIRCLE_LINEAR from './ic-circle-linear.svg';
 import IC_CIRCLE from './ic-circle.svg';
 import IC_CLOSE from './ic-close.svg';
 import IC_CORE from './ic-core.svg';
+import IC_DUNGMOI from './ic-dungmoi.svg';
+import IC_ELECTRIC from './ic-electric.svg';
 import IC_ENERGY from './ic-energy.svg';
 import IC_ENGLISH from './ic-english.svg';
 import IC_FACEBOOK from './ic-facebook.svg';
@@ -23,20 +28,30 @@ import IC_HOME_LEFT from './ic-home-left.svg';
 import IC_HOME_RIGHT from './ic-home-right.svg';
 import IC_HOME from './ic-home.svg';
 import IC_INS from './ic-ins.svg';
+import IC_IRON from './ic-iron.svg';
+import IC_LIGHT from './ic-light.svg';
 import IC_LINKEDLN from './ic-linkedln.svg';
+import IC_LODOT from './ic-lodot.svg';
 import IC_LOGO_DARK from './ic-logo-dark.svg';
 import IC_LOGO_HORIZONTAL from './ic-logo-horizontal.svg';
 import IC_MAINTAIN from './ic-maintain.svg';
 import IC_MENU from './ic-menu.svg';
+import IC_METAL from './ic-metal.svg';
 import IC_MISSION from './ic-mission.svg';
 import IC_NEWS from './ic-news.svg';
+import IC_OIL_V2 from './ic-oil-v2.svg';
+import IC_OIL from './ic-oil.svg';
 import IC_ONLY_LOGO from './ic-only-logo.svg';
 import IC_PARTNER from './ic-partner.svg';
 import IC_PROJECT from './ic-project.svg';
 import IC_SETTING from './ic-setting.svg';
 import IC_TEXT_TP from './ic-text-tp.svg';
+import IC_THUNG from './ic-thung.svg';
 import IC_VIETNAM from './ic-vietnam.svg';
 import IC_VISION from './ic-vision.svg';
+import IC_WATER_V2 from './ic-water-v2.svg';
+import IC_WATER from './ic-water.svg';
+import IC_WILD from './ic-wild.svg';
 import IC_YOUTUBE from './ic-youtube.svg';
 import IC_ZALO from './ic-zalo.svg';
 import ICON_CALENDAR from './ic_calendar.svg';
@@ -102,5 +117,20 @@ export const IconSvgs = {
   IC_PARTNER_4,
   IC_LOGO_DARK,
   IC_FRAME_HOME,
+  IC_OIL,
+  IC_LODOT,
+  IC_WATER,
+  IC_METAL,
+  IC_OIL_V2,
+  IC_LIGHT,
+  IC_DUNGMOI,
+  IC_ELECTRIC,
+  IC_THUNG,
+  IC_ACQUY,
+  IC_WILD,
+  IC_AXIT,
+  IC_WATER_V2,
+  IC_BUN,
+  IC_IRON,
 };
 export type IconSvgTypes = keyof typeof IconSvgs;

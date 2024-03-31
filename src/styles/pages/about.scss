@@ -1,0 +1,9 @@
+.slide-item {
+  display: flex; /* Đảm bảo các items xếp ngang */
+  flex-direction: column; /* Các thành phần con xếp theo cột */
+  align-items: center; /* Căn giữa các items */
+}
+
+.slide-item-container {
+  width: 100%; /* Đặt chiều rộng cho container của mỗi item */
+}

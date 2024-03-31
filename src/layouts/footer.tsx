@@ -1,7 +1,9 @@
 import { Divider, Layout } from 'antd';
+import Image from 'next/image';
 import { useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import ZALO_QR from '@/assets/image/zalo-qr.jpeg';
 import type { IconSvgTypes } from '@/assets/svg';
 import { IconSvgLocal, TextBase } from '@/components';
 import {
@@ -43,6 +45,7 @@ const FooterApp = () => {
   );
   const dataAdress = useMemo(() => {
     return [
+      { address: t('text:office') },
       {
         address: t('text:address_first'),
       },
@@ -98,6 +101,16 @@ const FooterApp = () => {
         <TextBase className="body-text-16-light mb-24 text-text-primary">
           {K_BOSS_SECOND}: {K_HOTLINE_SECOND}
         </TextBase>
+        <div className="-ml-16 mobile:ml-0">
+          <Image
+            src={ZALO_QR}
+            width={200}
+            height={200}
+            alt="Công ty môi trường xanh Tân Phú-tiêu huỷ hàng hoá theo yêu cầu"
+            loading="lazy"
+            sizes="100vw"
+          />
+        </div>
       </div>
     );
   }, [dataSocial]);

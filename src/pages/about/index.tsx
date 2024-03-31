@@ -3,6 +3,7 @@ import { Meta } from '@/layouts/Meta';
 import { AppConfig } from '@/utils/AppConfig';
 
 import { HeaderAboutPage } from './header';
+import { Intro } from './intro';
 import { MemberList } from './member-list';
 
 const About = () => {
@@ -10,6 +11,7 @@ const About = () => {
     <>
       <Meta title={AppConfig.title} description={AppConfig.description} />
       <HeaderAboutPage />
+      <Intro />
       <MemberList />
     </>
   );

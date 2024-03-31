@@ -32,6 +32,9 @@ textarea:focus, input:focus{
 @import "./components/toggle.scss";
 @import "./custom_theme.scss";
 @import "./animation.scss";
+@import './pages/about.scss';
+@import "react-slideshow-image/dist/styles.css";
+@import 'react-loading-skeleton/dist/skeleton.css';
 @tailwind utilities;
 
 ::-webkit-scrollbar {

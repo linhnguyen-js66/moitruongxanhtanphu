@@ -1,33 +1,32 @@
-import { memo, useMemo, useState } from 'react';
+import { memo, useMemo } from 'react';
 import isEqual from 'react-fast-compare';
+import { useTranslation } from 'react-i18next';
 
 import { TextBase } from '@/components';
 
 const Component = (props: any) => {
   const { isCount } = props;
-  const [first, setFirst] = useState(1);
-  const [second, setSecond] = useState(1);
-  const [third, setThird] = useState(1);
 
+  const { t } = useTranslation();
   const data = useMemo(
     () => [
       {
-        amount: first,
-        title: 'Hơn 3 nhà máy được đặt tại Việt Nam',
+        amount: 3,
+        title: t('text:nhamay'),
         size: 15,
       },
       {
-        amount: second,
-        title: 'Quy mô hơn 100 nhân viên tại 3 chi nhánh Bắc Trung Nam',
+        amount: 100,
+        title: t('text:quymo'),
         size: 30,
       },
       {
-        amount: third,
-        title: '16 công nghệ xử lý rác thải cho nhiều hạng mục khác nhau',
+        amount: 16,
+        title: t('text:congnghe'),
         size: 25,
       },
     ],
-    [first, second, third]
+    [t]
   );
   return (
     <div className="relative mx-32 my-[120px] mobile:mt-32">

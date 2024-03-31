@@ -3,11 +3,13 @@ import 'react-slideshow-image/dist/styles.css';
 import { Button, Form, Input, Modal, Select } from 'antd';
 import parsePhoneNumberFromString from 'libphonenumber-js';
 import Image from 'next/image';
-import { memo, useCallback, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { memo, useCallback, useEffect, useState } from 'react';
 import isEqual from 'react-fast-compare';
 import { useTranslation } from 'react-i18next';
 import { Slide } from 'react-slideshow-image';
 
+import BANNER_ENV from '@/assets/image/moitruong.jpg';
 import { ButtonBase, IconSvgLocal, TextBase } from '@/components';
 import { TYPE_CONTENT, useProject } from '@/hooks/useProject';
 import useScreenResize from '@/hooks/useScreenResize';
@@ -17,25 +19,28 @@ export type FieldType = {
   phoneNumber?: string;
   companyName?: string;
   email?: string;
+  purpose?: string;
+  content?: string;
 };
 const Component = (props: any) => {
   const {
     isActive,
     isModalOpen,
-    handleCancel,
-    configShow,
+    onCancel,
     content,
     onSelectContent,
-    setConfigShow,
     countryList,
     selectNation,
     onUpload,
     handleNation,
     loading,
     form,
+    purpose: listPurpose,
+    onHandlePurpose,
+    selectPurpose,
   } = useProject(props);
   const typeDevice = useScreenResize();
-
+  const router = useRouter();
   useEffect(() => {
     if (typeDevice == 'mobile') {
       setConfigShow({
@@ -45,6 +50,10 @@ const Component = (props: any) => {
     }
   }, [typeDevice]);
   const { t } = useTranslation();
+  const [configShow, setConfigShow] = useState({
+    slidesToScroll: 3,
+    slidesToShow: 3,
+  });
   const indicators = (index: any) => <div className="indicator_side" key={index} />;
   const renderHeader = useCallback(() => {
     return (
@@ -72,7 +81,7 @@ const Component = (props: any) => {
             <ButtonBase
               classNames="px-36 h-44 rounded-radius-xxxl hover:shadow-down-s hover:shadow-color-300 body-text-16-regular bg-primary-100 hover:text-color-900"
               name="btnProject"
-              onClick={() => {}}
+              onClick={() => router.push('/about')}
               t18n="text:about_comp"
               type="secondary"
             />
@@ -80,7 +89,7 @@ const Component = (props: any) => {
             <ButtonBase
               classNames="ml-12 flex h-46 items-center justify-center border-weight-none body-text-16-regular bg-color-transparent hover:bg-color-transparent"
               name="btnProject"
-              onClick={() => {}}
+              onClick={() => router.push('/about')}
               t18n="text:project_highlight"
               rightIcon="IC_ARROW_RIGHT"
             />
@@ -125,7 +134,11 @@ const Component = (props: any) => {
         onClick={() => onSelectContent(link)}
         customContent={
           <div className="flex items-center">
-            <TextBase t18n="text:view_more" preset="body-text-16-regular" className="mr-8" />
+            {link == TYPE_CONTENT.TUVAN ? (
+              <TextBase t18n="text:view_quodation" preset="body-text-16-regular" className="mr-8" />
+            ) : (
+              <TextBase t18n="text:view_more" preset="body-text-16-regular" className="mr-8" />
+            )}
             <div className="flex size-32 items-center justify-center rounded-[100%] bg-common-1000">
               <IconSvgLocal name="IC_ARROW_DOWN" classNames="-rotate-90" height={16} />
             </div>
@@ -167,8 +180,11 @@ const Component = (props: any) => {
                 <Image
                   fill
                   className="img-inner object-scale-down"
-                  src="https://images.unsplash.com/photo-1708356476484-ac4797f0dac8?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  src={BANNER_ENV}
                   alt="Công ty môi trường xanh Tân Phú dịch vụ tiêu huỷ hàng hoá tư vấn môi trường kinh doanh nhập khẩu phế liệu"
+                  loading="lazy"
+                  placeholder="blur"
+                  sizes="100vw"
                 />
               </div>
             </div>
@@ -218,13 +234,14 @@ const Component = (props: any) => {
           <Option key={index} value={item?.value}>
             <div className="flex flex-1 items-center justify-between">
               <TextBase preset="body-text-14-semibold">{item?.label}</TextBase>
-              {item?.icon && <Image alt="quocgiaphone" height={16} width={16} src={item?.icon} />}
+              {item?.emoji && <div>{item?.emoji}</div>}
             </div>
           </Option>
         ))}
       </Select>
     </Form.Item>
   );
+
   return (
     <div className="mt-[64px] px-32">
       {renderHeader()}
@@ -234,7 +251,7 @@ const Component = (props: any) => {
         // title={content?.title}
         open={isModalOpen}
         centered
-        onCancel={handleCancel}
+        onCancel={onCancel}
         width={600}
         footer={[]}
       >
@@ -256,6 +273,24 @@ const Component = (props: any) => {
                 placeholder="blur"
                 sizes="100vw"
               />
+            </div>
+          )}
+          {content?.type == TYPE_CONTENT.KINHDOANH && (
+            <div className="flex w-full items-center justify-between">
+              {[t('text:kimloai'), t('text:nhua'), t('text:giay')].map((el, index) => (
+                <div
+                  className={`item-animation w-full rounded-radius-m border-weight-l border-primary-700 p-16 text-center ${index % 2 != 0 ? 'mx-16' : ''}`}
+                  key={index}
+                >
+                  <TextBase
+                    className="text-primary-600"
+                    preset="body-text-16-semibold"
+                    presetMobile="body-text-14-semibold"
+                  >
+                    {el}
+                  </TextBase>
+                </div>
+              ))}
             </div>
           )}
           {content?.form && (
@@ -332,13 +367,47 @@ const Component = (props: any) => {
                   />
                   {/* </Input.Group> */}
                 </Form.Item>
-
+                <Form.Item<FieldType>
+                  name="purpose"
+                  label={t('text:service')}
+                  rules={[{ required: true, message: t('validate:not_empty') }]}
+                >
+                  <Select
+                    onChange={onHandlePurpose}
+                    options={listPurpose}
+                    style={{ width: '100%' }}
+                    placeholder={t('text:select_service')}
+                    optionFilterProp="children"
+                  />
+                </Form.Item>
+                {selectPurpose && (
+                  <TextBase
+                    style={{ fontStyle: 'italic' }}
+                    preset="body-text-16-semibold"
+                    presetMobile="body-text-14-semibold"
+                    className="mb-32 text-primary-500"
+                  >
+                    {selectPurpose?.value}
+                  </TextBase>
+                )}
+                <Form.Item<FieldType>
+                  label={t('text:content')}
+                  name="content"
+                  rules={[{ required: true, message: t('validate:not_empty') }]}
+                >
+                  <Input.TextArea />
+                </Form.Item>
                 <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
                   <Button
                     loading={loading}
                     disabled={loading}
                     name="close_btn"
-                    style={{ backgroundColor: 'rgb(var(--primary-200))', height: 44, width: '80%' }}
+                    style={{
+                      backgroundColor: 'rgb(var(--primary-200))',
+                      height: 44,
+                      paddingLeft: 32,
+                      paddingRight: 32,
+                    }}
                     htmlType="submit"
                     className="background-btn"
                   >

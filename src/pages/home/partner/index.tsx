@@ -1,8 +1,23 @@
+import Image from 'next/image';
 import { memo, useEffect, useMemo, useState } from 'react';
 import isEqual from 'react-fast-compare';
+import { useTranslation } from 'react-i18next';
 import { Slide } from 'react-slideshow-image';
 
-import type { IconSvgTypes } from '@/assets/svg';
+import PARTNER1 from '@/assets/image/partner-1.png';
+import PARTNER11 from '@/assets/image/partner-11.png';
+import PARTNER12 from '@/assets/image/partner-12.png';
+import PARTNER12A from '@/assets/image/partner-12a.png';
+import PARTNER14 from '@/assets/image/partner-14.png';
+import PARTNER15 from '@/assets/image/partner-15.png';
+import PARTNER2 from '@/assets/image/partner-2.png';
+import PARTNER3 from '@/assets/image/partner-3.png';
+import PARTNER4 from '@/assets/image/partner-4.png';
+import PARTNER5 from '@/assets/image/partner-5.png';
+import PARTNER6 from '@/assets/image/partner-6.png';
+import PARTNER6A from '@/assets/image/partner-6a.png';
+import PARTNER8 from '@/assets/image/partner-8.png';
+import PARTNER9 from '@/assets/image/partner-9.png';
 import { ButtonBase, IconSvgLocal, TextBase } from '@/components';
 import useScreenResize from '@/hooks/useScreenResize';
 
@@ -12,7 +27,7 @@ const Component = () => {
     slidesToShow: 4,
   });
   const typeDevice = useScreenResize();
-
+  const { t } = useTranslation();
   useEffect(() => {
     if (typeDevice == 'mobile') {
       setConfigShow({
@@ -21,21 +36,50 @@ const Component = () => {
       });
     }
   }, [typeDevice]);
-  const indicators = (index: any) =>
-    typeDevice == 'mobile' ? <div className="indicator_side" key={index} /> : <div />;
+  const indicators = (index: any) => <div className="indicator_side" key={index} />;
   const dataPartner = useMemo(() => {
     return [
       {
-        ic: 'IC_PARTNER_1',
+        ic: PARTNER1,
       },
       {
-        ic: 'IC_PARTNER_2',
+        ic: PARTNER2,
       },
       {
-        ic: 'IC_PARTNER_3',
+        ic: PARTNER3,
       },
       {
-        ic: 'IC_PARTNER_4',
+        ic: PARTNER4,
+      },
+      {
+        ic: PARTNER5,
+      },
+      {
+        ic: PARTNER6,
+      },
+      {
+        ic: PARTNER6A,
+      },
+      {
+        ic: PARTNER8,
+      },
+      {
+        ic: PARTNER9,
+      },
+      {
+        ic: PARTNER11,
+      },
+      {
+        ic: PARTNER12,
+      },
+      {
+        ic: PARTNER12A,
+      },
+      {
+        ic: PARTNER14,
+      },
+      {
+        ic: PARTNER15,
       },
     ];
   }, []);
@@ -63,12 +107,11 @@ const Component = () => {
           <TextBase
             preset="body-text-24-regular"
             presetMobile="body-text-16-regular"
-            className="line-clamp-2 text-color-500"
+            className="text-color-500"
           >
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-            commodo
-            <span className="rounded-radius-5xl bg-primary-200 px-8 py-4">conUt enim</span>
-            ad minim
+            {t('text:partner_intro')}
+            <span className="rounded-radius-5xl bg-primary-200 px-8 py-4">{t('text:intro_2')}</span>
+            {t('text:intro_3')}
           </TextBase>
         </div>
       </div>
@@ -80,15 +123,23 @@ const Component = () => {
           slidesToScroll={configShow.slidesToScroll}
           slidesToShow={configShow.slidesToShow}
           indicators={indicators}
-          autoplay={false}
+          autoplay
           prevArrow={<div />}
           nextArrow={<div />}
           canSwipe
-          infinite={false}
+          infinite
         >
           {dataPartner.map((item, index) => (
-            <div key={index} className="flex items-center justify-center">
-              <IconSvgLocal name={item?.ic as IconSvgTypes} height={150} width={150} />
+            <div key={index} className="flex h-full items-center justify-center">
+              <Image
+                src={item?.ic}
+                placeholder="blur"
+                height={100}
+                width={200}
+                loading="lazy"
+                sizes="100vw"
+                alt="Đối tác Công ty môi trường xanh Tân Phú tiêu huỷ hàng hoá theo yêu cầu"
+              />
             </div>
           ))}
         </Slide>

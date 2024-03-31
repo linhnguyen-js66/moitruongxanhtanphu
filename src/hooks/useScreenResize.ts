@@ -17,9 +17,7 @@ const getTypeDevice = () => {
 // mobile: { max: '640px' },
 
 export default function useScreenResize() {
-  const [typeDevice, setTypeDevice] = useState<'desktop' | 'tablet' | 'mobile'>(
-    getTypeDevice(),
-  );
+  const [typeDevice, setTypeDevice] = useState<'desktop' | 'tablet' | 'mobile'>(getTypeDevice());
 
   useEffect(() => {
     const onResize = () => {

@@ -1,0 +1,77 @@
+[
+  {
+    "id": 20001,
+    "service": "text:service_1",
+    "ic": "IC_LODOT"
+  },
+  {
+    "id": 20002,
+    "service": "text:service_2",
+    "ic": "IC_OIL"
+  },
+  {
+    "id": 20003,
+    "service": "text:service_3",
+    "ic": "IC_WATER"
+  },
+  {
+    "id": 20004,
+    "service": "text:service_4",
+    "ic": "IC_METAL"
+  },
+  {
+    "id": 20005,
+    "service": "text:service_5",
+    "ic": "IC_OIL_V2"
+  },
+  {
+    "id": 20006,
+    "service": "text:service_6",
+    "ic": "IC_LIGHT"
+  },
+  {
+    "id": 20007,
+    "service": "text:service_7",
+    "ic": "IC_DUNGMOI"
+  },
+  {
+    "id": 20008,
+    "service": "text:service_8",
+    "ic": "IC_ELECTRIC"
+  },
+  {
+    "id": 20009,
+    "service": "text:service_9",
+    "ic": "IC_THUNG"
+  },
+  {
+    "id": 20010,
+    "service": "text:service_10",
+    "ic": "IC_ACQUY"
+  },
+  {
+    "id": 20011,
+    "service": "text:service_11",
+    "ic": "IC_WILD"
+  },
+  {
+    "id": 20012,
+    "service": "text:service_12",
+    "ic": "IC_AXIT"
+  },
+  {
+    "id": 20013,
+    "service": "text:service_13",
+    "ic": "IC_BUN"
+  },
+  {
+    "id": 20014,
+    "service": "text:service_14",
+    "ic": "IC_WATER_V2"
+  },
+  {
+    "id": 20015,
+    "service": "text:service_15",
+    "ic": "IC_IRON"
+  }
+]
